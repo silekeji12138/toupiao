@@ -10,6 +10,8 @@
      <!-- 编辑器源码文件 -->
     <script type="text/javascript" src="application/views/admin/js/ueditor/ueditor.all.js"></script>
      <!-- 实例化编辑器 -->
+	<!--layer-->
+	<script type="text/javascript" src="public/layer/layer.js"></script>
 </head>
 
 <body class="body-color">
@@ -53,7 +55,10 @@
 				<td>2</td>
 				<td>3</td>
 				<td>正常</td>
-				<td><a href="">增加票数</a>&emsp;<a href="" >减少票数</a>&emsp;<a href="">锁定</a></td>
+				<td>
+					<a href="javascript:;"  id="add">增加票数</a>&emsp;<a href="javascript:;" id="reduce">减少票数</a>&emsp;
+					<a href="javascript:;" id="lock">锁定</a>
+				</td>
 			</tr>
 		</table>
 	<p style="text-align: right;padding: 20px 0"><a href="index.php?p=admin&c=tongji&a=log" style="color: #0B61A4">查询票数修改记录</a></p>
@@ -95,6 +100,78 @@
 			$(".a-info-ss").click(function(){
 				$(".a-info .collapse").fadeToggle();
 			})
+//			增加票数
+			$("#add").click(function () {
+				layer.prompt({title: '增加票数', formType: 0}, function(number1, index){
+					layer.close(index);
+					layer.prompt({title: '增加总投票人数', formType: 0}, function(number2, index){
+						layer.close(index);
+                        layer.prompt({title: '增加原因', formType: 2}, function(reason, index) {
+                            layer.close(index);
+                            if (!isNaN(number1) && !isNaN(number2)) {
+                                $.post("/index.php?p=admin&c=tongji&a=increase", {
+                                    "num1": number1,
+                                    "num2": number2
+                                }, function (data) {
+                                    if (data == 1) {
+                                        layer.msg('增加票数：' + number1 + '<br>增加总投票人数：' + number2);
+                                    } else {
+                                        layer.msg("添加失败", {icon: 2});
+                                    }
+                                })
+                            } else {
+                                layer.msg("请输入整数", {icon: 5})
+                            }
+                        });
+					});
+				});
+			})
+			//减少票数
+            $("#reduce").click(function () {
+                layer.prompt({title: '减少票数', formType: 0}, function(num1, index){
+                    layer.close(index);
+                    layer.prompt({title: '减少总投票人数', formType: 5}, function(num2, index){
+                        layer.close(index);
+                        layer.prompt({title: '减少原因', formType: 2}, function(reason, index) {
+                            layer.close(index);
+                            if(!isNaN(num1)&&!isNaN(num2)){
+                                $.post("/index.php?p=admin&c=tongji&a=decrease",{"num1":num1,"num2":num2},function (data) {
+                                    if(data==1){
+                                        layer.msg('减少票数：'+ num1 +'<br>减少总投票人数：'+num2);
+                                    }else{
+                                        layer.msg("减少失败",{icon: 2});
+                                    }
+                                })
+                            }else {
+                                layer.msg("请输入整数",{icon:5})
+                            }
+                        })
+
+
+                    });
+                });
+            })
+            //锁定
+            $("#lock").click(function () {
+                var that = $(this);
+                layer.prompt({title: '锁定禁止投票,当用户选择该投票项时弹出的提示信息：', formType: 2}, function(text, index){
+                    layer.close(index);
+					$.post("/index.php?p=admin&c=tongji&a=lock",{},function (data) {
+						if(data==1){
+                            layer.msg('操作成功',{icon: 1});
+                            that.closest("td").append("<a href='javascript:;' id='unlock'>解除锁定</a>");
+                            that.css("display","none");
+						}else{
+							layer.msg("操作失败",{icon: 2});
+						}
+					})
+				});
+            })
+			//解锁
+			$("table").on("click","#unlock",function () {
+				$(this).remove();
+				$("#lock").css("display","inline-block")
+            })
 		</script>
 
 </body>
