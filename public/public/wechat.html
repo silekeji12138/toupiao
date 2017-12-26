@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/application/views/admin/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/application/views/admin/fonts/css/fontello.css" />
+    <link rel="stylesheet" type="text/css" href="/application/views/admin/css/common.css" />
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/application/views/admin/fonts/css/fontello-ie7.css">
+    <![endif]-->
+    <script src="/application/views/admin/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="/application/views/admin/js/jquery.cookie.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="/application/views/admin/js/html5shiv.min.js"></script>
+    <script src="/application/views/admin/js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/application/views/admin/js/DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="/public/layer/layer.js"></script>
+</head>
+<body>
+<!--<form action="/index.php?p=admin&c=text&a=ab" method="post">-->
+    <table class="table table-border table-hover">
+        <tr>
+            <td>
+                <div class="am-form-group">
+                    <div class="am-g">
+                        <label class="am-u-md-3 am-md-text-right am-padding-left-0">
+                            上传公众号二维码，使用户关注公众号后才可进行投票
+                        </label><br>
+                        <input type="file" class="input"><button  style="cursor: pointer" id="btn" class="btn btn-blue">确认操作</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="" alt="" id="img">
+            </td>
+        </tr>
+    </table>
+    <!--</form>-->
+    <script>
+        function change() {
+            $("button").click(function () {
+                var width = $(this).attr('name');
+                $('img').attr('width',width);
+            })
+
+        }
+        $(function () {
+            $("#btn").click(function () {
+                $.post("/index.php?p=admin&c=test&a=ab",{"qr_code":"0"},function (data) {
+                    if (data.code==1){
+                        layer.msg('提交成功');
+                        $("img").attr('scr',data.url);
+                    }else {
+                        layer.msg('提交失败', {icon: 2});
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

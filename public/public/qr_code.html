@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/application/views/admin/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/application/views/admin/fonts/css/fontello.css" />
+    <link rel="stylesheet" type="text/css" href="/application/views/admin/css/common.css" />
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/application/views/admin/fonts/css/fontello-ie7.css">
+    <![endif]-->
+    <script src="/application/views/admin/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="/application/views/admin/js/jquery.cookie.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="/application/views/admin/js/html5shiv.min.js"></script>
+    <script src="/application/views/admin/js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/application/views/admin/js/DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+    <table class="table table-border table-hover" border="1px">
+        <tr>使用手机等移动设备扫描二维码即可投票，省去输入冗长网址的麻烦，还可将二维码印刷在各种实体材料上进行宣传。</tr>
+        <tr>
+            <td width="300px" height="300px"><img src="/public/images/1.png" alt="二维码" width="150px"></td>
+            <td>
+                二维码尺寸 <br>
+                <button onclick="change()" class="btn btn-blue" name="80" id="small" style="cursor: pointer">小</button>
+                <button onclick="change()" class="btn btn-blue" name="150" id="middle" style="cursor: pointer">中</button>
+                <button onclick="change()" class="btn btn-blue" name="260" id="big" style="cursor: pointer">大</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        function change() {
+            $("button").click(function () {
+                var width = $(this).attr('name');
+                $('img').attr('width',width);
+            })
+
+        }
+    </script>
+</body>
+</html>
