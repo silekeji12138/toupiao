@@ -56,11 +56,11 @@
 			</tr>
 
 			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
-				<td>4</td>
-				<td>5</td>
+				<td><?=date("Y-m-d H:i",time())?></td>
+				<td>增加</td>
+				<td>增加3票，增加5人</td>
+				<td>延迟</td>
+				<td><?=date("Y-m-d H:i",time())?></td>
 			</tr>
 		</table>
 <footer>

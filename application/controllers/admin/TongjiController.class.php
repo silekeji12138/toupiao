@@ -29,4 +29,37 @@ class TongjiController extends BaseController
     public function visitsAction(){
 
     }
+    //增加票数和投票人数
+    public function increaseAction(){
+//        var_dump($_POST);
+        $data['type']="增加";
+        if (1){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+    //减少票数和投票人数
+    public function decreaseAction(){
+        $data['type']="减少";
+        var_dump($_POST);
+        if (0){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+    //锁定时的提示信息
+    public function lockAction(){
+//        $data['type']="锁定";
+        if (1){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+    public function unlockAction(){
+//        $data['type']="解锁";
+
+    }
 }
