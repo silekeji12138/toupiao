@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<?php include CUR_VIEW_PATH."public/head.html"?>
+</head>
+
+<body class="body-color">
+	<header>
+		<?php include CUR_VIEW_PATH."public/header.html"?>
+
+	</header>
+	<!--侧边菜单栏-->
+	<aside class="side-nav">
+		<?php include CUR_VIEW_PATH."public/aside.html"?>
+	</aside>
+	<!--侧边菜单栏 end-->
+
+	<!--主体部分-->
+	<section class="body-content">
+		<!--当前位置-->
+		<div class="site-location">
+			&nbsp;&nbsp;
+			<span class="ficon ficon-weizhi"></span>&nbsp;<a href="/index.php?p=admin&c=index&a=index">用户首页</a>
+			&nbsp;&gt;&nbsp;<a href="/index.php?p=admin&c=vote&a=index">投票管理</a>
+			&nbsp;&gt;&nbsp;<a href="">创建投票</a>
+			&nbsp;&gt;&nbsp;<a href="#">第三步</a>
+		</div>
+		
+		<form method="post" action="" name='theForm' id="theForm">
+		<table class="table table-info cs-table">
+			<h2 style="margin-top: 10px">第三步：功能选项设置</h2>
+			<tr>
+				<th style="width:10%">投票开始时间</th>
+				<td colspan="4">
+					<input type="radio" name="start" checked value="0" id="start_off"><label for="start_off">不设开始时间</label>  <br>
+					<input type="radio" name="start" value="1" id="start_on"><label for="start_on">指定开始时间</label>
+					<input name="start" type="datetime-local" value="" class="input" />
+				</td>
+			</tr>
+			<tr>
+				<th style="width:10%">投票结束时间</th>
+				<td colspan="4">
+					<input type="radio" name="end" checked value="0" id="end_off"><label for="end_off">不设开始时间</label>  <br>
+					<input type="radio" name="end" value="1" id="end_on"><label for="end_on">指定开始时间</label>
+					<input name="end" type="datetime-local" value="" class="input" />
+				</td>
+			</tr>
+			<tr>
+				<th>排序和统计显示设置
+					（投票前）</th>
+				<td>
+					排序设置 <br>
+					<input name="paixu" id="default" type="radio" value="" checked/><label for="default">默认预设</label><br>
+					<input name="paixu" id="desc" type="radio" value=""/><label for="desc">票数从大到小</label><br>
+					<input name="paixu" id="asc" type="radio" value=""/><label for="asc">票数从小到大</label><br>
+					<input name="paixu" id="rand" type="radio" value=""/><label for="rand">随机排序</label><br>
+				</td>
+				<td>
+					统计显示设置 <br>
+					<input name="xianshi" id="show_num" type="checkbox" value="" checked="checked"/><label for="show_num">显示票数</label><br>
+					<input name="xianshi" id="show_NO" type="checkbox" value=""/><label for="show_NO">显示名次</label><br>
+					<input name="xianshi" id="show_picture" type="checkbox" value=""/><label for="show_picture">显示条状图</label><br>
+					<input name="xianshi" id="show_percent" type="checkbox" value=""/><label for="show_percent">显示百分比</label><br>
+				</td>
+				<td>
+					总投票人次显示 <br>
+					<input name="zongrenshu" id="on" type="radio" value="" checked/><label for="on">显示</label><br>
+					<input name="zongrenshu" id="off" type="radio" value=""/><label for="off">不显示</label><br>
+				</td>
+				<td>
+					总访问量显示 <br>
+					<input name="zongfangwen" id="view_on" type="radio" value="" checked/><label for="view_on">显示</label><br>
+					<input name="zongfangwen" id="view_off" type="radio" value=""/><label for="view_off">不显示</label><br>
+				</td>
+			</tr>
+			<tr>
+				<th>排序和统计显示设置
+					（投票后）</th>
+				<td>
+					排序设置 <br>
+					<input name="after_paixu" id="after_default" type="radio" value="" checked/><label for="after_default">默认预设</label><br>
+					<input name="after_paixu" id="after_desc" type="radio" value=""/><label for="after_desc">票数从大到小</label><br>
+					<input name="after_paixu" id="after_asc" type="radio" value=""/><label for="after_asc">票数从小到大</label><br>
+					<input name="after_paixu" id="after_rand" type="radio" value=""/><label for="after_rand">随机排序</label><br>
+				</td>
+				<td>
+					统计显示设置 <br>
+					<input name="after_xianshi" id="after_show_num" type="checkbox" value="" checked="checked"/><label for="after_show_num">显示票数</label><br>
+					<input name="after_xianshi" id="after_show_NO" type="checkbox" value=""/><label for="after_show_NO">显示名次</label><br>
+					<input name="after_xianshi" id="after_show_picture" type="checkbox" value=""/><label for="after_show_picture">显示条状图</label><br>
+					<input name="after_xianshi" id="after_show_percent" type="checkbox" value=""/><label for="after_show_percent">显示百分比</label><br>
+				</td>
+				<td>
+					总投票人次显示 <br>
+					<input name="after_zongrenshu" id="after_on" type="radio" value="" checked/><label for="after_on">显示</label><br>
+					<input name="after_zongrenshu" id="after_off" type="radio" value="" /><label for="after_off">不显示</label><br>
+				</td>
+				<td>
+					总访问量显示 <br>
+					<input name="after_zongfangwen" id="after_view_on" type="radio" value="" checked/><label for="after_view_on">显示</label><br>
+					<input name="after_zongfangwen" id="after_view_off" type="radio" value=""/><label for="after_view_off">不显示</label><br>
+				</td>
+			</tr>
+			<tr>
+				<th>排序和统计显示设置
+					（投票截止后）</th>
+				<td>
+					排序设置 <br>
+					<input name="end_paixu" id="end_default" type="radio" value="" checked/><label for="end_default">默认预设</label><br>
+					<input name="end_paixu" id="end_desc" type="radio" value=""/><label for="end_desc">票数从大到小</label><br>
+					<input name="end_paixu" id="end_asc" type="radio" value=""/><label for="end_asc">票数从小到大</label><br>
+					<input name="end_paixu" id="end_rand" type="radio" value=""/><label for="end_rand">随机排序</label><br>
+				</td>
+				<td>
+					统计显示设置 <br>
+					<input name="end_xianshi" id="end_show_num" type="checkbox" value="" checked="checked"/><label for="end_show_num">显示票数</label><br>
+					<input name="end_xianshi" id="end_show_NO" type="checkbox" value=""/><label for="end_show_NO">显示名次</label><br>
+					<input name="end_xianshi" id="end_show_picture" type="checkbox" value=""/><label for="end_show_picture">显示条状图</label><br>
+					<input name="end_xianshi" id="end_show_percent" type="checkbox" value=""/><label for="end_show_percent">显示百分比</label><br>
+				</td>
+				<td>
+					总投票人次显示 <br>
+					<input name="end_zongrenshu" id="end_people_on" type="radio" value="" checked/><label for="end_people_on">显示</label><br>
+					<input name="end_zongrenshu" id="end_people_off" type="radio" value=""/><label for="end_people_off">不显示</label><br>
+				</td>
+				<td>
+					总访问量显示 <br>
+					<input name="end_zongfangwen" id="end_view_on" type="radio" value="" checked/><label for="end_view_on">显示</label><br>
+					<input name="end_zongfangwen" id="end_view_off" type="radio" value=""/><label for="end_view_off">不显示</label><br>
+				</td>
+			</tr>
+			<tr>
+				<th>排行榜设置</th>
+				<td colspan="4">
+					启用排行榜栏目 <br>
+					<input name="paihanglanmu" type="radio" id="sort_on" value="1" checked/><label for="sort_on">启用</label><br>
+					<input name="paihanglanmu" type="radio" id="sort_off" value="2"/><label for="sort_off">关闭</label><br>
+					排行榜显示条件 <br>
+					<input name="paihangtiaojian" type="radio" id="sort_1" value="1" checked/><label for="sort_1">总是可以查看</label>
+					<input name="paihangtiaojian" type="radio" id="sort_2" value="2"/><label for="sort_2">投票后或投票截止后才可以查看</label>
+					<input name="paihangtiaojian" type="radio" id="sort_3" value="3"/><label for="sort_3">投票截止后才可以查看</label><br>
+					排行榜显示项目 <br>
+					<input name="paihangxiangmu" type="checkbox" id="sort_a" value="1" checked/><label for="sort_a">显示票数</label>
+					<input name="paihangxiangmu" type="checkbox" id="sort_b" value="2"/><label for="sort_b">显示得票百分比</label>
+					<input name="paihangxiangmu" type="checkbox" id="sort_c" value="3"/><label for="sort_c">显示条状图</label>
+				</td>
+			</tr>
+			<tr>
+				<th>显示候选项数量</th>
+				<td colspan="4">
+					<input name="xianshixuanxiang" type="radio" id="choose_on" value="1" checked/><label for="choose_on">是</label><br>
+					<input name="xianshixuanxiang" type="radio" id="choose_off" value="1" checked/><label for="choose_off">否</label>
+				</td>
+			</tr>
+			<tr>
+				<th>投票渠道</th>
+				<td colspan="4">
+					<input name="tpqudao[]" type="checkbox" id="computer" value="1" checked/><label for="computer">允许电脑访问和投票</label><br>
+					<input name="tpqudao[]" type="checkbox" id="mobile" value="2"/><label for="mobile">允许移动设备浏览器访问和投票</label><br>
+					<input name="tpqudao[]" type="checkbox" id="weChat" value="3" /><label for="weChat">允许微信客户端访问和投票（基于微信客户端的扫码、公众号链接推送、分享等形式）</label>
+				</td>
+			</tr>
+			<tr>
+				<th>关注指定公众号</th>
+				<td colspan="4">
+					是否必须关注指定微信公众号才能投票。 <br>
+					<input name="gongzhonghao" type="radio" id="no" value="0" checked/><label for="no">不需要</label><br>
+					<input name="gongzhonghao" type="radio" id="need" value="1" checked/><label for="need">必须关注指定公众号</label><br>
+				</td>
+			</tr>
+			<tr><td colspan="5">以下设置与防刷票有关，请根据实际情况设置，如需了解更多，可查看《如何防范网络在线投票刷票作弊》。</td></tr>
+			<tr>
+				<th>IP限制</th>
+				<td colspan="4">
+					相同内网（wifi），或地理位置很接近的相同运营商的手机网络，IP有可能相同。<br>
+					IP限制是最基本和有效防刷票防攻击技术，如非特殊情况请务必开启！<br>
+					<select name="ip_xianzhi" class="select-container1">
+						<option value="1">不限</option>
+						<option value="2">一天只能投一次票</option>
+						<option value="3">一天只能投多次票</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>设备限制</th>
+				<td colspan="4">
+					设备限制并不是十分可靠的防刷票技术，在某些情况下可以绕过限制重复投票，建议应多种放防刷票技术结合使用，请参考教程。！<br>
+					<select name="shebei_xianzhi"  class="select-container1">
+						<option value="1">不限</option>
+						<option value="2">一天只能投多次票</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>微信号验证</th>
+				<td colspan="4">
+					如启用微信号验证，可限制相同微信号的投票次数，并可在投票日志记录用户的微信号公开信息（昵称、头像等）。<br>
+					微信验证同时支持电脑和手机投票：使用电脑投票会提示用微信客户端扫描电脑屏幕的二维码；使用手机等移动设备投票，则必须通过微信客户端进入投票，投票前会提示授权验证微信账号（一键授权验证，无需密码）。 <br>
+					<input name="weChat_check" type="radio" id="weChat_need" value="1" /><label for="weChat_need">启用微信号验证限制</label><br>
+					<input name="weChat_check" type="radio" id="weChat_no" value="0" checked/><label for="weChat_no">不验证微信号</label><br>
+				</td>
+			</tr>
+			<tr>
+				<th>启用手机短信验证码</th>
+				<td colspan="4">要求输入手机短信接收的验证码才能投票，且每个手机号码只能投票一次。<br>
+					短信验证码次数是限量发送的，当前可用额度为0条，超出需要另外购买，详见升级套餐。<br>
+					<input name="phone_check" type="radio" id="phone_need" value="1" /><label for="weChat_need">启用</label><br>
+					<input name="phone_check" type="radio" id="phone_no" value="0" checked/><label for="phone_no">不启用</label><br>
+				</td>
+			</tr>
+			<tr>
+				<th>投票前强制停留时间</th>
+				<td colspan="4">
+					可要求用户在投票网页停留一定时间才能投票，0则表示不限制。<br>
+					<input name="delay" type="text" value="" class="input" style="padding-left: 10px ">秒
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td colspan="4">
+						<a href="#" class="btn btn-blue" > 上一步</a>&nbsp;&nbsp;
+						<a href="#" class="btn btn-blue" onclick="$('#theForm').submit()"> 下一步</a>
+			   </td>
+			</tr>
+		</table>
+     </form>
+
+<footer>
+	<?php include CUR_VIEW_PATH."public/footer.html"?>
+</footer>
+</section>
+
+<p class="clear"></p>
+
+<script src="application/views/admin/js/wow.min.js" type="text/javascript"></script>
+<script src="application/views/admin/js/common.js" type="text/javascript"></script>
+
+<!--wow 初始化-->
+<script>
+	if(!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
+		new WOW().init();
+	};
+	
+	///index.php?p=admin&c=filed&a=Zh2Py&Zh_str=龚华尧
+    //将输入的中文转换为拼音
+    $("#u2").blur(function(){
+    	var re_str=$.ajax({url:"index.php?p=admin&c=filed&a=Zh2Py&model_id=<?php echo $_GET["model_id"]?>&Zh_str="+$("#u2").val(),async:false}).responseText;
+    	var re_json=JSON.parse(re_str);
+    	if(re_json.status=="true")
+    		{
+    		var u1_value=re_json.content;
+            $("#u1").val(u1_value);
+    		}
+    	else
+    		{
+    		alert(re_json.content);
+    		
+    		}
+        
+    
+    });
+	
+</script>
+</body>
+
+</html>

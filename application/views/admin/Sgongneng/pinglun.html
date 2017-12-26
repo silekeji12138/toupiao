@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<?php include CUR_VIEW_PATH."public/head.html"?>
+	 <!--编辑器-->
+	 <!-- 编辑器配置文件 -->
+     <script type="text/javascript" src="application/views/admin/js/ueditor/ueditor.config.js"></script>
+     <!-- 编辑器源码文件 -->
+     <script type="text/javascript" src="application/views/admin/js/ueditor/ueditor.all.js"></script>
+     <!-- 实例化编辑器 -->
+	<style>
+	</style>
+    
+</head>
+
+<body class="body-color">
+	<header>
+		<?php include CUR_VIEW_PATH."public/header.html"?>
+
+	</header>
+	<!--侧边菜单栏-->
+	<aside class="side-nav">
+		<?php include CUR_VIEW_PATH."public/aside.html"?>
+	</aside>
+	<!--侧边菜单栏 end-->
+
+	<!--主体部分-->
+	<section class="body-content">
+		<!--当前位置-->
+		<div class="site-location">
+			&nbsp;&nbsp;
+			<span class="ficon ficon-weizhi"></span>&nbsp;<a href="index.php?p=admin&c=index&a=index">用户首页</a>
+			&nbsp;&gt;&nbsp;<a href="index.php?p=admin&c=moxing&a=index">模型管理</a>
+			&nbsp;&gt;&nbsp;<a href="index.php?p=admin&c=autotable&a=index&model_id=<?php echo $_GET['model_id'] ?>">表单管理</a>
+			&nbsp;&gt;&nbsp;<a href="#">添加信息</a>
+		</div>
+		
+		<!--当前位置 end-->
+		<br/>
+		
+    <form method="post" action="index.php?p=admin&c=toupiao&a=edit&model_id=<?php echo $_GET['model_id'] ?>" name='theForm' id="theForm" enctype="multipart/form-data">
+		<section class="pos-relative">
+			<!--发布文章中间部分-->
+			<article class="article-edit">
+				<!--上边信息-->
+				<div class="article-top">
+				    <table class="a-info">
+						<tr>
+							<td><a style="font-size: x-large">评论功能的设置</a></td>
+						</tr>
+						<tr>
+							<td width="170">启用评论功能</td>
+							<td><input type="radio" name="pl" value="1">是
+							<input type="radio" name="pl" value="2">否</td>
+						</tr>
+						<tr>
+							<td>评论审核</td>
+							<td>
+								<input type="radio" name="sh" value="1">是
+								<input type="radio" name="sh" value="2">否
+							</td>
+						</tr>
+						<tr>
+							<td>禁用的关键词</td>
+							<td>可以禁止一些您不希望出现的关键词，不同关键词之间用回车换行分隔。<br>
+								<textarea  name="fx" ></textarea></td>
+						</tr>
+						<tr>
+							<td>禁止评论时的提示模式</td>
+							<td>
+								<input type="radio" name="plmx" value="1">即使被拦截，也提示评论发表成功（推荐）
+								<br><input type="radio" name="plmx" value="2">明示提醒评论被拦截
+							</td>
+						</tr>
+						<tr>
+							<td>强制以微信昵称发表评论</td>
+							<td>如选择“必须以微信昵称发表评论”，评论的署名将强制使用用户的微信昵称和头像，可实现一定程度的“实名制”。 此时必须先开启投票需要微信验证。
+								<br>如选择“不强制要求”，在发表评论时可选使用微信头像昵称或自主定义昵称。
+								<br>如在未开启投票需要微信验证情况下，则评论署名始终不会使用微信信息。
+								<br><input type="radio" name="plmx" value="1">即使被拦截，也提示评论发表成功（推荐）
+								<br><input type="radio" name="plmx" value="2">明示提醒评论被拦截
+							</td>
+						</tr>
+				    </table>
+
+				</div>
+
+			</article>
+			<!--发布文章 侧边-->
+			
+			<p>
+				<tr>
+				<th></th>
+				<td>
+						<a href="#" class="btn btn-blue" onclick="$('#theForm').submit()"><em class="ficon ficon-queren"></em> 确认操作</a>&nbsp;&nbsp;
+						<a href="#" class="btn btn-green" onclick="if(confirm('确定清空重填?')==false)return false;$('#theForm').find('input').val('')"><em class="ficon ficon-shanchu"></em> 清空重填</a>
+			   </td>
+			   </tr>
+			</p>
+			
+		</section>
+     </form>
+
+
+<footer>
+	<?php include CUR_VIEW_PATH."public/footer.html"?>
+</footer>
+</section>
+
+<p class="clear"></p>
+
+<script src="application/views/admin/js/wow.min.js" type="text/javascript"></script>
+<script src="application/views/admin/js/common.js" type="text/javascript"></script>
+
+<!--wow 初始化-->
+<script>
+	if(!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
+		new WOW().init();
+	};
+</script>
+<script type="text/javascript">
+			$(".a-info-ss").click(function(){
+				$(".a-info .collapse").fadeToggle();
+			})
+		</script>
+
+</body>
+
+</html>

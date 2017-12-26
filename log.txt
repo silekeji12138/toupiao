@@ -1,0 +1,364 @@
+[2017-12-23 07:44:38] set names utf8
+[2017-12-23 07:44:38] DESC sl_System
+[2017-12-23 07:44:38] set names utf8
+[2017-12-23 07:44:38] DESC sl_System
+[2017-12-23 07:44:38] select dtime from sl_System where  u3='127.0.0.1' and u4='管理员登录' order by id desc 
+[2017-12-23 07:44:38] set names utf8
+[2017-12-23 07:44:38] DESC sl_admin
+[2017-12-23 07:44:38] SELECT * FROM sl_admin WHERE 
+		       username = 'cdsile' AND password = '01ac3d95a020811609ceef9ed8336e2e'
+		       LIMIT 1
+[2017-12-23 07:44:38] set names utf8
+[2017-12-23 07:44:38] DESC sl_group
+[2017-12-23 07:44:38] select * from `sl_group` where `id`=1
+[2017-12-23 07:44:38] UPDATE `sl_admin` SET `last_login_time`='1514015078',`last_login_ip`='127.0.0.1' WHERE `user_id`=23
+[2017-12-23 07:44:38] INSERT INTO `sl_System` (`u1`,`u2`,`u3`,`u4`) VALUES ('cdsile','cdsile(超级管理员):登录成功,操作页面:www.ggg.com/index.php?p=admin&amp;c=login&amp;a=signin','127.0.0.1','管理员登录')
+[2017-12-23 07:46:09] set names utf8
+[2017-12-23 07:46:09] DESC sl_sort
+[2017-12-23 07:46:09] set names utf8
+[2017-12-23 07:46:09] DESC sl_wenda
+[2017-12-23 07:46:10] set names utf8
+[2017-12-23 07:46:10] DESC sl_system
+[2017-12-23 07:46:10] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:46:10] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:46:10] set names utf8
+[2017-12-23 07:46:10] DESC sl_column_group
+[2017-12-23 07:46:10] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:46:10] set names utf8
+[2017-12-23 07:46:10] DESC sl_column_group
+[2017-12-23 07:46:10] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:46:19] set names utf8
+[2017-12-23 07:46:19] DESC sl_sort
+[2017-12-23 07:46:19] set names utf8
+[2017-12-23 07:46:19] DESC sl_wenda
+[2017-12-23 07:46:19] set names utf8
+[2017-12-23 07:46:19] DESC sl_system
+[2017-12-23 07:46:19] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:46:19] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:46:19] set names utf8
+[2017-12-23 07:46:19] DESC sl_column_group
+[2017-12-23 07:46:19] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:46:19] set names utf8
+[2017-12-23 07:46:19] DESC sl_column_group
+[2017-12-23 07:46:19] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:46:59] set names utf8
+[2017-12-23 07:46:59] DESC sl_sort
+[2017-12-23 07:46:59] set names utf8
+[2017-12-23 07:46:59] DESC sl_wenda
+[2017-12-23 07:46:59] set names utf8
+[2017-12-23 07:46:59] DESC sl_system
+[2017-12-23 07:46:59] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:46:59] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:46:59] set names utf8
+[2017-12-23 07:46:59] DESC sl_column_group
+[2017-12-23 07:46:59] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:46:59] set names utf8
+[2017-12-23 07:46:59] DESC sl_column_group
+[2017-12-23 07:46:59] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_sort
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_wenda
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_system
+[2017-12-23 07:47:00] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:47:00] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_column_group
+[2017-12-23 07:47:00] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_column_group
+[2017-12-23 07:47:00] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_sort
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_wenda
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_system
+[2017-12-23 07:47:00] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:47:00] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_column_group
+[2017-12-23 07:47:00] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_column_group
+[2017-12-23 07:47:00] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_sort
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_wenda
+[2017-12-23 07:47:00] set names utf8
+[2017-12-23 07:47:00] DESC sl_system
+[2017-12-23 07:47:01] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:47:01] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:47:01] set names utf8
+[2017-12-23 07:47:01] DESC sl_column_group
+[2017-12-23 07:47:01] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:01] set names utf8
+[2017-12-23 07:47:01] DESC sl_column_group
+[2017-12-23 07:47:01] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:01] set names utf8
+[2017-12-23 07:47:01] DESC sl_sort
+[2017-12-23 07:47:01] set names utf8
+[2017-12-23 07:47:01] DESC sl_wenda
+[2017-12-23 07:47:01] set names utf8
+[2017-12-23 07:47:01] DESC sl_system
+[2017-12-23 07:47:01] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:47:01] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:47:01] set names utf8
+[2017-12-23 07:47:01] DESC sl_column_group
+[2017-12-23 07:47:01] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:01] set names utf8
+[2017-12-23 07:47:01] DESC sl_column_group
+[2017-12-23 07:47:01] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:04] set names utf8
+[2017-12-23 07:47:04] DESC sl_sort
+[2017-12-23 07:47:04] set names utf8
+[2017-12-23 07:47:04] DESC sl_wenda
+[2017-12-23 07:47:04] set names utf8
+[2017-12-23 07:47:04] DESC sl_system
+[2017-12-23 07:47:04] select * from sl_sort where id in ( SELECT sort_id from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime) GROUP BY sort_id) order by id desc 
+[2017-12-23 07:47:04] SELECT distinct  date_format(dtime,'%y-%m-%d') as dtime  from sl_wenda where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(dtime)  ORDER BY dtime desc
+[2017-12-23 07:47:04] set names utf8
+[2017-12-23 07:47:04] DESC sl_column_group
+[2017-12-23 07:47:04] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:47:04] set names utf8
+[2017-12-23 07:47:04] DESC sl_column_group
+[2017-12-23 07:47:04] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:53:40] set names utf8
+[2017-12-23 07:53:40] DESC sl_moxing
+[2017-12-23 07:53:40] select u1 from sl_moxing where id=84
+[2017-12-23 07:53:40] set names utf8
+[2017-12-23 07:53:40] DESC sl_gongxu
+[2017-12-23 07:53:40] set names utf8
+[2017-12-23 07:53:40] DESC sl_filed
+[2017-12-23 07:53:40] select * from sl_filed where model_id='84' and u5='是' order by u10 asc 
+[2017-12-23 07:53:40] select count(*) from sl_gongxu where  1=1 
+[2017-12-23 07:53:40] select * from sl_gongxu  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 07:53:40] set names utf8
+[2017-12-23 07:53:40] DESC sl_column_group
+[2017-12-23 07:53:40] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 07:53:40] set names utf8
+[2017-12-23 07:53:40] DESC sl_column_group
+[2017-12-23 07:53:40] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:53:51] set names utf8
+[2017-12-23 15:53:51] DESC sl_moxing
+[2017-12-23 15:53:51] select u1 from sl_moxing where id=84
+[2017-12-23 15:53:51] set names utf8
+[2017-12-23 15:53:51] DESC sl_gongxu
+[2017-12-23 15:53:51] set names utf8
+[2017-12-23 15:53:51] DESC sl_filed
+[2017-12-23 15:53:51] select * from sl_filed where model_id='84' and u5='是' order by u10 asc 
+[2017-12-23 15:53:51] select count(*) from sl_gongxu where  1=1 
+[2017-12-23 15:53:51] select * from sl_gongxu  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:53:51] set names utf8
+[2017-12-23 15:53:51] DESC sl_column_group
+[2017-12-23 15:53:51] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:53:51] set names utf8
+[2017-12-23 15:53:51] DESC sl_column_group
+[2017-12-23 15:53:51] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:53] set names utf8
+[2017-12-23 15:54:53] DESC sl_moxing
+[2017-12-23 15:54:53] select u1 from sl_moxing where id=84
+[2017-12-23 15:54:53] set names utf8
+[2017-12-23 15:54:53] DESC sl_gongxu
+[2017-12-23 15:54:53] set names utf8
+[2017-12-23 15:54:53] DESC sl_filed
+[2017-12-23 15:54:53] select * from sl_filed where model_id='84' and u5='是' order by u10 asc 
+[2017-12-23 15:54:53] select count(*) from sl_gongxu where  1=1 
+[2017-12-23 15:54:53] select * from sl_gongxu  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:54:53] set names utf8
+[2017-12-23 15:54:53] DESC sl_column_group
+[2017-12-23 15:54:53] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:53] set names utf8
+[2017-12-23 15:54:53] DESC sl_column_group
+[2017-12-23 15:54:53] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:55] set names utf8
+[2017-12-23 15:54:55] DESC sl_moxing
+[2017-12-23 15:54:55] select u1 from sl_moxing where id=84
+[2017-12-23 15:54:55] set names utf8
+[2017-12-23 15:54:55] DESC sl_gongxu
+[2017-12-23 15:54:55] set names utf8
+[2017-12-23 15:54:55] DESC sl_filed
+[2017-12-23 15:54:55] select * from sl_filed where model_id='84' and u5='是' order by u10 asc 
+[2017-12-23 15:54:55] select count(*) from sl_gongxu where  1=1 
+[2017-12-23 15:54:55] select * from sl_gongxu  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:54:55] set names utf8
+[2017-12-23 15:54:55] DESC sl_column_group
+[2017-12-23 15:54:55] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:55] set names utf8
+[2017-12-23 15:54:55] DESC sl_column_group
+[2017-12-23 15:54:55] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:56] set names utf8
+[2017-12-23 15:54:56] DESC sl_moxing
+[2017-12-23 15:54:56] select u1 from sl_moxing where id=80
+[2017-12-23 15:54:56] set names utf8
+[2017-12-23 15:54:56] DESC sl_wenti
+[2017-12-23 15:54:56] set names utf8
+[2017-12-23 15:54:56] DESC sl_filed
+[2017-12-23 15:54:56] select * from sl_filed where model_id='80' and u5='是' order by u10 asc 
+[2017-12-23 15:54:56] select count(*) from sl_wenti where  1=1 
+[2017-12-23 15:54:56] select * from sl_wenti  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:54:56] set names utf8
+[2017-12-23 15:54:56] DESC sl_column_group
+[2017-12-23 15:54:56] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:56] set names utf8
+[2017-12-23 15:54:56] DESC sl_column_group
+[2017-12-23 15:54:56] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:57] set names utf8
+[2017-12-23 15:54:57] DESC sl_moxing
+[2017-12-23 15:54:57] select u1 from sl_moxing where id=79
+[2017-12-23 15:54:57] set names utf8
+[2017-12-23 15:54:57] DESC sl_zhuanjia
+[2017-12-23 15:54:57] set names utf8
+[2017-12-23 15:54:57] DESC sl_filed
+[2017-12-23 15:54:57] select * from sl_filed where model_id='79' and u5='是' order by u10 asc 
+[2017-12-23 15:54:57] select count(*) from sl_zhuanjia where  1=1 
+[2017-12-23 15:54:57] select * from sl_zhuanjia  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:54:57] set names utf8
+[2017-12-23 15:54:57] DESC sl_column_group
+[2017-12-23 15:54:57] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:57] set names utf8
+[2017-12-23 15:54:57] DESC sl_column_group
+[2017-12-23 15:54:57] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:58] set names utf8
+[2017-12-23 15:54:58] DESC sl_moxing
+[2017-12-23 15:54:58] select u1 from sl_moxing where id=60
+[2017-12-23 15:54:58] set names utf8
+[2017-12-23 15:54:58] DESC sl_user
+[2017-12-23 15:54:58] set names utf8
+[2017-12-23 15:54:58] DESC sl_filed
+[2017-12-23 15:54:58] select * from sl_filed where model_id='60' and u5='是' order by u10 asc 
+[2017-12-23 15:54:58] select count(*) from sl_user where  1=1 
+[2017-12-23 15:54:58] select * from sl_user  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:54:58] set names utf8
+[2017-12-23 15:54:58] DESC sl_column_group
+[2017-12-23 15:54:58] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:58] set names utf8
+[2017-12-23 15:54:58] DESC sl_column_group
+[2017-12-23 15:54:58] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:59] set names utf8
+[2017-12-23 15:54:59] DESC sl_moxing
+[2017-12-23 15:54:59] select u1 from sl_moxing where id=79
+[2017-12-23 15:54:59] set names utf8
+[2017-12-23 15:54:59] DESC sl_zhuanjia
+[2017-12-23 15:54:59] set names utf8
+[2017-12-23 15:54:59] DESC sl_filed
+[2017-12-23 15:54:59] select * from sl_filed where model_id='79' and u5='是' order by u10 asc 
+[2017-12-23 15:54:59] select count(*) from sl_zhuanjia where  1=1 
+[2017-12-23 15:54:59] select * from sl_zhuanjia  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:54:59] set names utf8
+[2017-12-23 15:54:59] DESC sl_column_group
+[2017-12-23 15:54:59] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:54:59] set names utf8
+[2017-12-23 15:54:59] DESC sl_column_group
+[2017-12-23 15:54:59] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:21] set names utf8
+[2017-12-23 15:55:21] DESC sl_moxing
+[2017-12-23 15:55:21] select u1 from sl_moxing where id=73
+[2017-12-23 15:55:21] set names utf8
+[2017-12-23 15:55:21] DESC sl_banben
+[2017-12-23 15:55:21] set names utf8
+[2017-12-23 15:55:21] DESC sl_filed
+[2017-12-23 15:55:21] select * from sl_filed where model_id='73' and u5='是' order by u10 asc 
+[2017-12-23 15:55:21] select count(*) from sl_banben where  1=1 
+[2017-12-23 15:55:21] select * from sl_banben  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:55:21] set names utf8
+[2017-12-23 15:55:21] DESC sl_column_group
+[2017-12-23 15:55:21] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:21] set names utf8
+[2017-12-23 15:55:21] DESC sl_column_group
+[2017-12-23 15:55:21] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:23] set names utf8
+[2017-12-23 15:55:23] DESC sl_column_group
+[2017-12-23 15:55:23] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:23] set names utf8
+[2017-12-23 15:55:23] DESC sl_column_group
+[2017-12-23 15:55:23] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:26] set names utf8
+[2017-12-23 15:55:26] DESC sl_admin
+[2017-12-23 15:55:26] select count(*) from sl_admin
+[2017-12-23 15:55:26] select * from sl_admin   order by  id desc   limit 0, 10
+[2017-12-23 15:55:26] set names utf8
+[2017-12-23 15:55:26] DESC sl_group
+[2017-12-23 15:55:26] select * from `sl_group` where `id`=1
+[2017-12-23 15:55:26] set names utf8
+[2017-12-23 15:55:26] DESC sl_column_group
+[2017-12-23 15:55:26] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:26] set names utf8
+[2017-12-23 15:55:26] DESC sl_column_group
+[2017-12-23 15:55:26] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:27] set names utf8
+[2017-12-23 15:55:27] DESC sl_group
+[2017-12-23 15:55:27] select count(*) from sl_group
+[2017-12-23 15:55:27] select * from sl_group   order by  id desc   limit 0, 10
+[2017-12-23 15:55:27] set names utf8
+[2017-12-23 15:55:27] DESC sl_admin
+[2017-12-23 15:55:27] select count(*) as count_id from sl_admin where group_id=1 
+[2017-12-23 15:55:27] set names utf8
+[2017-12-23 15:55:27] DESC sl_column_group
+[2017-12-23 15:55:27] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:55:27] set names utf8
+[2017-12-23 15:55:27] DESC sl_column_group
+[2017-12-23 15:55:27] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:09] set names utf8
+[2017-12-23 15:56:09] DESC sl_group
+[2017-12-23 15:56:10] select count(*) from sl_group
+[2017-12-23 15:56:10] select * from sl_group   order by  id desc   limit 0, 10
+[2017-12-23 15:56:10] set names utf8
+[2017-12-23 15:56:10] DESC sl_admin
+[2017-12-23 15:56:10] select count(*) as count_id from sl_admin where group_id=1 
+[2017-12-23 15:56:10] set names utf8
+[2017-12-23 15:56:10] DESC sl_column_group
+[2017-12-23 15:56:10] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:10] set names utf8
+[2017-12-23 15:56:10] DESC sl_column_group
+[2017-12-23 15:56:10] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:10] set names utf8
+[2017-12-23 15:56:10] DESC sl_group
+[2017-12-23 15:56:10] select count(*) from sl_group
+[2017-12-23 15:56:10] select * from sl_group   order by  id desc   limit 0, 10
+[2017-12-23 15:56:10] set names utf8
+[2017-12-23 15:56:10] DESC sl_admin
+[2017-12-23 15:56:10] select count(*) as count_id from sl_admin where group_id=1 
+[2017-12-23 15:56:10] set names utf8
+[2017-12-23 15:56:10] DESC sl_column_group
+[2017-12-23 15:56:10] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:10] set names utf8
+[2017-12-23 15:56:10] DESC sl_column_group
+[2017-12-23 15:56:10] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:11] set names utf8
+[2017-12-23 15:56:11] DESC sl_group
+[2017-12-23 15:56:11] select count(*) from sl_group
+[2017-12-23 15:56:11] select * from sl_group   order by  id desc   limit 0, 10
+[2017-12-23 15:56:11] set names utf8
+[2017-12-23 15:56:11] DESC sl_admin
+[2017-12-23 15:56:11] select count(*) as count_id from sl_admin where group_id=1 
+[2017-12-23 15:56:11] set names utf8
+[2017-12-23 15:56:11] DESC sl_column_group
+[2017-12-23 15:56:11] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:11] set names utf8
+[2017-12-23 15:56:11] DESC sl_column_group
+[2017-12-23 15:56:11] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:14] set names utf8
+[2017-12-23 15:56:14] DESC sl_moxing
+[2017-12-23 15:56:14] select u1 from sl_moxing where id=73
+[2017-12-23 15:56:14] set names utf8
+[2017-12-23 15:56:14] DESC sl_banben
+[2017-12-23 15:56:14] set names utf8
+[2017-12-23 15:56:14] DESC sl_filed
+[2017-12-23 15:56:14] select * from sl_filed where model_id='73' and u5='是' order by u10 asc 
+[2017-12-23 15:56:14] select count(*) from sl_banben where  1=1 
+[2017-12-23 15:56:14] select * from sl_banben  where  1=1    order by   id desc  limit 0, 10
+[2017-12-23 15:56:14] set names utf8
+[2017-12-23 15:56:14] DESC sl_column_group
+[2017-12-23 15:56:14] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:14] set names utf8
+[2017-12-23 15:56:14] DESC sl_column_group
+[2017-12-23 15:56:14] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:17] set names utf8
+[2017-12-23 15:56:17] DESC sl_column_group
+[2017-12-23 15:56:17] select * from `sl_column_group`   where  classid = '0' and  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
+[2017-12-23 15:56:17] set names utf8
+[2017-12-23 15:56:17] DESC sl_column_group
+[2017-12-23 15:56:17] select * from `sl_column_group`   where  u4 = '显示' and  group_id = '1' and  1=1  order by u2 asc, id desc 
