@@ -31,6 +31,10 @@ class ToupiaoController extends BaseController{
     public function menuAction(){
         include CUR_VIEW_PATH . "Stoupiao" . DS ."menu.html";
     }
+    //菜单提交
+    public function menuaddAction(){
+        var_dump($_POST);
+    }
     //编辑菜单显示的页面
     public function menueditAction(){
         include CUR_VIEW_PATH . "Stoupiao" . DS ."menu.html";
