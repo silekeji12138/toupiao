@@ -456,7 +456,29 @@ class Model
             return false;
         }
     }
-    
+
+    /**
+     * 自定义方法two
+     */
+    public function dl($where)
+    {
+
+        $sql = "DELETE FROM `{$this->table}` WHERE $where";
+
+        if ($this->db->query($sql)) {
+            // 成功，并判断受影响的记录数
+            if ($rows = mysql_affected_rows()) {
+                // 有受影响的记录
+                return $rows;
+            } else {
+                // 没有受影响的记录
+                return false;
+            }
+        } else {
+            // 失败返回false
+            return false;
+        }
+    }
 
     
     public function start_T() {

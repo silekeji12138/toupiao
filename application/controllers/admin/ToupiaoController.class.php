@@ -23,12 +23,15 @@ class ToupiaoController extends BaseController{
     public function two1Action()
     {
         $data1['action_id'] = $_GET['action_id'];
+        $data1['addtime']=time();
         $data = $_POST;
         for ($i=0;$i<count($data['neirong']);$i++){
             $data1['neirong']=$data['neirong'][$i];
             $data1['stroy']=$data['stroy'][$i];
             $data1['biaoti']=$data['biaoti'][$i];
             $data1['header']=$data['header'][$i];
+            $data1['tel']=$data['tel'][$i];
+            $data1['people']=$data['people'][$i];
             $model=new model('two');
             $model->insert($data1);
           }

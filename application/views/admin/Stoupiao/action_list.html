@@ -45,11 +45,11 @@
 				<th style="text-align: left"><h2>投票活动管理</h2></th>
 			</tr>
 			<?php foreach($list as $v):?>
-			<tr>
+			<tr id="<?php echo $v['id'] ?>">
 				<td style="text-align: left;text-indent: 2em">
 					<div>
 						<p><a style="color: #0B61A4;font-size: 17px;" href="index.php?p=admin&c=action&a=index&action_id=<?=$v['id']?>"><b><?=$v['huodongbiaoti']?></b></a></p>
-						<p><a href="index.php?p=admin&c=action&a=index&action_id=$v['id']">概况</a>&emsp;<a href="">设置</a>&emsp;<a href="">功能</a>&emsp;<a href="">统计</a>&emsp;<a href="">发布</a>&emsp;<a href="">删除</a></p>
+						<p><a href="javascript:;">概况</a>&emsp;<a id="del" href="javascript:;">删除</a></p>
 					</div>
 				</td>
 			</tr>
@@ -74,7 +74,14 @@
 <script type="text/javascript">
 			$(".a-info-ss").click(function(){
 				$(".a-info .collapse").fadeToggle();
-			})
+			});
+            $('body').on('click','#del',function () {
+                var that=$(this).closest('tr');
+                var id=$(this).closest('tr').prop('id');
+                $.get('index.php?p=admin&c=action&a=delete1',{id:id},function () {
+                    that.remove();
+                })
+            })
 </script>
 
 </body>

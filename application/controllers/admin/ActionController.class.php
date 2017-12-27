@@ -26,4 +26,24 @@ class ActionController extends BaseController
 
         include CUR_VIEW_PATH . "Stoupiao" . DS ."action_vote.html";
     }
+    /**
+     * 删除具体投票选项
+     */
+    public function deleteAction(){
+        $id=$_GET['id'];
+        $model=new model('two');
+        $model->dl('id='.$id);
+    }
+    /**
+     * 主活动表删除,3表联动删除
+     */
+    public function delete1Action(){
+        $id=$_GET['id'];
+        $model=new model('toupiao');
+        $model->dl('id='.$id);
+        $rs=new model('two');
+        $rs->dl('action_id='.$id);
+        $rs1=new model('rule');
+        $rs1->dl('action_id='.$id);
+    }
 }

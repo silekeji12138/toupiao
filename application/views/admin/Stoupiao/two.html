@@ -60,6 +60,8 @@
 					     	<td width="100">投票候选项</td>
 						    <td id="add">
 								<data>
+							<input type="hidden" value="0" id="people" name="people[]">
+							<input type="hidden" value="0" id="tel" name="tel[]">
 							<input type="hidden" value="122" id="neirong1" name="neirong[]">
 							<input type="hidden" value="231" id="stroy" name="stroy[]">
 							<input type="hidden" value="231" id="header1" name="header[]">
@@ -161,26 +163,34 @@
 <script type="text/javascript">
 	var a;
 	var b;
+	var c;
+	var d;
 			$(".a-info-ss").click(function(){
 				$(".a-info .collapse").fadeToggle();
 			});
 	        $('#add1').click(function () {
-				$('<data><input type="hidden" value="133" id="neirong1" name="neirong[]"><input type="hidden" value="231" id="stroy" name="stroy[]"><input type="hidden" value="231" id="header1" name="header[]"><br><input style="width: 200px" name="biaoti[]" type="text" class="input"><a href="javascript:;" id="neirong"><span class="ficon ficon-xiugai"></span><a href="javascript:;" id="header" title="封面上传"><span class="ficon ficon-tianjia"></span></a></a><a href="javascript:;" id="del" title="删除"><span class="ficon  ficon-shanchu"></span></a></data>').appendTo('#add');
+				$('<data><input type="hidden" value="0" id="tel" name="tel[]"><input type="hidden" value="0" id="people" name="people[]"><input type="hidden" value="133" id="neirong1" name="neirong[]"><input type="hidden" value="231" id="stroy" name="stroy[]"><input type="hidden" value="231" id="header1" name="header[]"><br><input style="width: 200px" name="biaoti[]" type="text" class="input"><a href="javascript:;" id="neirong"><span class="ficon ficon-xiugai"></span><a href="javascript:;" id="header" title="封面上传"><span class="ficon ficon-tianjia"></span></a></a><a href="javascript:;" id="del" title="删除"><span class="ficon  ficon-shanchu"></span></a></data>').appendTo('#add');
             });
             $('body').on('click','#neirong' ,function(){
                 a=$(this).closest('data').children('#neirong1');
                 b=$(this).closest('data').children('#stroy');
+                c=$(this).closest('data').children('#people');
+                d=$(this).closest('data').children('#tel');
 				layer.open({
                     title: '描述/故事',
-                    content: '<a>描述:<textarea  id="1"></textarea><br>故事:<textarea  id="2"></textarea><br><input id="22" type="submit" value="提交"></a>'
+                    content: '<a>参赛人:<input id="3" value=""><br>电&emsp;话:<input id="4" value=""><br>描述:<textarea  id="1"></textarea><br>故事:<textarea  id="2"></textarea><br><input id="22" type="submit" value="提交"></a>'
                 });
 
             });
             $('body').on('click','#22',function () {
                 var v=$(this).closest('a').children('#1').val();
                 var v1=$(this).closest('a').children('#2').val();
+                var v2=$(this).closest('a').children('#3').val();
+                var v3=$(this).closest('a').children('#4').val();
                 a.val(v);
                 b.val(v1);
+                c.val(v2);
+                d.val(v3);
                 alert('成功')
             });
             <!-- 图片上传上传上传-->
