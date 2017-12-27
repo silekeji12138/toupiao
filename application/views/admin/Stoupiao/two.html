@@ -47,7 +47,7 @@
 		<!--当前位置 end-->
 		<br/>
 		
-    <form method="post" action="index.php?p=admin&c=toupiao&a=two1" name='theForm' id="theForm" enctype="multipart/form-data">
+    <form method="post" action="index.php?p=admin&c=toupiao&a=two1&action_id=<?php echo $_GET['id'] ?>" name='theForm' id="theForm" enctype="multipart/form-data">
 		<section class="pos-relative">
 			<!--发布文章中间部分-->
 			<article class="article-edit">
@@ -55,13 +55,14 @@
 				<div class="article-top">
 				 	 
 				    <table class="a-info">
-						<a href="javascript:;" id="add1">添加选项</a>
+						<a href="javascript:;" id="add1" class="btn btn-default" style="color: red">添加选项</a>
                             <tr>
 					     	<td width="100">投票候选项</td>
 						    <td id="add">
 								<data>
 							<input type="hidden" value="122" id="neirong1" name="neirong[]">
 							<input type="hidden" value="231" id="stroy" name="stroy[]">
+							<input type="hidden" value="231" id="header1" name="header[]">
 							<input style="width: 200px" name="biaoti[]" type="text" class="input"><a href="javascript:;" id="neirong" title="描述/故事"><span class="ficon ficon-xiugai"></span></a><a href="javascript:;" id="header" title="封面上传"><span class="ficon ficon-tianjia"></span></a>
 									<a href="javascript:;" id="del" title="删除"><span class="ficon  ficon-shanchu"></span></a>
 								</data>
@@ -70,29 +71,29 @@
 						<tr>
 							<td>投票选项分页</td>
 							<td>
-								<input name="fenye" type="radio" value="1">分页
-								<input name="fenye" type="radio" value="2">不分页
+								<input name="fy" type="radio" value="1">分页
+								<input name="fy" type="radio" value="2">不分页
 							</td>
 						</tr>
 						<tr>
 							<td>启用搜索功能</td>
 							<td>
-								<input name="fenye" type="radio" value="1">不启用
-								<input name="fenye" type="radio" value="2">启用
+								<input name="sousuo" type="radio" value="1">不启用
+								<input name="sousuo" type="radio" value="2">启用
 							</td>
 						</tr>
 						<tr>
 							<td>排版设置</td>
 							<td>
 								每行显示选项数(电脑版)&nbsp;
-								<input name="paiban" type="radio" value="2">2&nbsp;
-								<input name="pc_paiban" type="radio" value="3">3&nbsp;
-								<input name="pc_paiban" type="radio" value="4">4&nbsp;
-								<input name="pc_paiban" type="radio" value="5">5&nbsp;<br>
+								<input name="dnpx" type="radio" value="2">2&nbsp;
+								<input name="dnpx" type="radio" value="3">3&nbsp;
+								<input name="dnpx" type="radio" value="4">4&nbsp;
+								<input name="dnpx" type="radio" value="5">5&nbsp;<br>
 								每行显示选项数(移动版)&nbsp;
-								<input name="paiban" type="radio" value="1">1&nbsp;
-								<input name="paiban" type="radio" value="2">2&nbsp;
-								<input name="paiban" type="radio" value="3">3&nbsp;
+								<input name="sjpx" type="radio" value="1">1&nbsp;
+								<input name="sjpx" type="radio" value="2">2&nbsp;
+								<input name="sjpx" type="radio" value="3">3&nbsp;
 							</td>
 						</tr>
 					</table>
@@ -164,7 +165,7 @@
 				$(".a-info .collapse").fadeToggle();
 			});
 	        $('#add1').click(function () {
-				$('<data><input type="hidden" value="133" id="neirong1" name="neirong[]"><input type="hidden" value="231" id="stroy" name="stroy[]"><br><input style="width: 200px" name="biaoti[]" type="text" class="input"><a href="javascript:;" id="neirong"><span class="ficon ficon-xiugai"></span></a><a href="javascript:;" id="del" title="删除"><span class="ficon  ficon-shanchu"></span></a></data>').appendTo('#add');
+				$('<data><input type="hidden" value="133" id="neirong1" name="neirong[]"><input type="hidden" value="231" id="stroy" name="stroy[]"><input type="hidden" value="231" id="header1" name="header[]"><br><input style="width: 200px" name="biaoti[]" type="text" class="input"><a href="javascript:;" id="neirong"><span class="ficon ficon-xiugai"></span><a href="javascript:;" id="header" title="封面上传"><span class="ficon ficon-tianjia"></span></a></a><a href="javascript:;" id="del" title="删除"><span class="ficon  ficon-shanchu"></span></a></data>').appendTo('#add');
             });
             $('body').on('click','#neirong' ,function(){
                 a=$(this).closest('data').children('#neirong1');
@@ -187,9 +188,31 @@
                 b=$(this).closest('data').children('#header1');
 				layer.open({
 					title: '封面上传',
-					content: '<a><form id="tf"><input name="file" type="file"><button id="23">提交</button></form></a>'
+					content: '<a><form id="tf" enctype="multipart/form-data" ><img id="img"  style="width: 100px;height: 100px"><br><input name="file" type="file"></form><button id="23">提交</button></a>'
 				});
 			});
+			$('body').on('click','#23',function () {
+			    var img=$(this).closest('a').children('#tf').children('#img');
+				var form=new  FormData($(this).closest('a').children('#tf')[0]);
+//                var formData = new FormData($( "#uploadForm" )[0]);
+                $.ajax({
+                    url: 'index.php?p=admin&c=toupiao&a=image' ,
+                    type: 'POST',
+                    data: form,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (msg) {
+                        b.val(msg);
+                        img.attr('src',msg);
+
+                    },
+                    error: function (returndata) {
+                        alert(returndata);
+                    }
+                });
+            });
             <!-- 删除-->
 			$('body').on('click','#del' ,function(){
 				$(this).closest('data').remove();

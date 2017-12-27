@@ -28,23 +28,19 @@
 			&nbsp;&gt;&nbsp;<a href="#">第三步</a>
 		</div>
 		
-		<form method="post" action="" name='theForm' id="theForm">
+		<form method="post" action="index.php?p=admin&c=toupiao&a=three1&action_id=<?php echo $_GET['action_id'] ?>" name='theForm' id="theForm">
 		<table class="table table-info cs-table">
 			<h2 style="margin-top: 10px">第三步：功能选项设置</h2>
 			<tr>
-				<th style="width:10%">投票开始时间</th>
+				<th style="width:15%">投票开始时间(不设置就表示不限制)</th>
 				<td colspan="4">
-					<input type="radio" name="start" checked value="0" id="start_off"><label for="start_off">不设开始时间</label>  <br>
-					<input type="radio" name="start" value="1" id="start_on"><label for="start_on">指定开始时间</label>
-					<input name="start" type="datetime-local" value="" class="input" />
+					<input name="start" type="date" value="" class="input" />
 				</td>
 			</tr>
 			<tr>
-				<th style="width:10%">投票结束时间</th>
+				<th style="width:10%">投票结束时间(不设置就表示不限制)</th>
 				<td colspan="4">
-					<input type="radio" name="end" checked value="0" id="end_off"><label for="end_off">不设开始时间</label>  <br>
-					<input type="radio" name="end" value="1" id="end_on"><label for="end_on">指定开始时间</label>
-					<input name="end" type="datetime-local" value="" class="input" />
+					<input name="end" type="date" value="" class="input" />
 				</td>
 			</tr>
 			<tr>
@@ -52,27 +48,27 @@
 					（投票前）</th>
 				<td>
 					排序设置 <br>
-					<input name="px" id="default" type="radio" value="" checked/><label for="default">默认预设</label><br>
-					<input name="px" id="desc" type="radio" value=""/><label for="desc">票数从大到小</label><br>
-					<input name="px" id="asc" type="radio" value=""/><label for="asc">票数从小到大</label><br>
-					<input name="px" id="rand" type="radio" value=""/><label for="rand">随机排序</label><br>
+					<input name="px" id="default" type="radio" value="1" checked/><label for="default">默认预设</label><br>
+					<input name="px" id="desc" type="radio" value="2"/><label for="desc">票数从大到小</label><br>
+					<input name="px" id="asc" type="radio" value="3"/><label for="asc">票数从小到大</label><br>
+					<input name="px" id="rand" type="radio" value="4"/><label for="rand">随机排序</label><br>
 				</td>
 				<td>
 					统计显示设置 <br>
-					<input name="xs" id="show_num" type="checkbox" value="" checked="checked"/><label for="show_num">显示票数</label><br>
-					<input name="xs" id="show_NO" type="checkbox" value=""/><label for="show_NO">显示名次</label><br>
-					<input name="xs" id="show_picture" type="checkbox" value=""/><label for="show_picture">显示条状图</label><br>
-					<input name="xs" id="show_percent" type="checkbox" value=""/><label for="show_percent">显示百分比</label><br>
+					<input name="xs[]" id="show_num" type="checkbox" value="1" checked="checked"/><label for="show_num">显示票数</label><br>
+					<input name="xs[]" id="show_NO" type="checkbox" value="2"/><label for="show_NO">显示名次</label><br>
+					<input name="xs[]" id="show_picture" type="checkbox" value="3"/><label for="show_picture">显示条状图</label><br>
+					<input name="xs[]" id="show_percent" type="checkbox" value="4"/><label for="show_percent">显示百分比</label><br>
 				</td>
 				<td>
 					总投票人次显示 <br>
-					<input name="zrs" id="on" type="radio" value="" checked/><label for="on">显示</label><br>
-					<input name="zrs" id="off" type="radio" value=""/><label for="off">不显示</label><br>
+					<input name="zrs" id="on" type="radio" value="1" checked/><label for="on">显示</label><br>
+					<input name="zrs" id="off" type="radio" value="2"/><label for="off">不显示</label><br>
 				</td>
 				<td>
 					总访问量显示 <br>
-					<input name="zfw" id="view_on" type="radio" value="" checked/><label for="view_on">显示</label><br>
-					<input name="zfw" id="view_off" type="radio" value=""/><label for="view_off">不显示</label><br>
+					<input name="zfw" id="view_on" type="radio" value="1" checked/><label for="view_on">显示</label><br>
+					<input name="zfw" id="view_off" type="radio" value="2"/><label for="view_off">不显示</label><br>
 				</td>
 			</tr>
 			<tr>
@@ -80,27 +76,27 @@
 					（投票后）</th>
 				<td>
 					排序设置 <br>
-					<input name="after_px" id="after_default" type="radio" value="" checked/><label for="after_default">默认预设</label><br>
-					<input name="after_px" id="after_desc" type="radio" value=""/><label for="after_desc">票数从大到小</label><br>
-					<input name="after_px" id="after_asc" type="radio" value=""/><label for="after_asc">票数从小到大</label><br>
-					<input name="after_px" id="after_rand" type="radio" value=""/><label for="after_rand">随机排序</label><br>
+					<input name="after_px" id="after_default" type="radio" value="1" checked/><label for="after_default">默认预设</label><br>
+					<input name="after_px" id="after_desc" type="radio" value="2"/><label for="after_desc">票数从大到小</label><br>
+					<input name="after_px" id="after_asc" type="radio" value="3"/><label for="after_asc">票数从小到大</label><br>
+					<input name="after_px" id="after_rand" type="radio" value="4"/><label for="after_rand">随机排序</label><br>
 				</td>
 				<td>
 					统计显示设置 <br>
-					<input name="after_xs" id="after_show_num" type="checkbox" value="" checked="checked"/><label for="after_show_num">显示票数</label><br>
-					<input name="after_xs" id="after_show_NO" type="checkbox" value=""/><label for="after_show_NO">显示名次</label><br>
-					<input name="after_xs" id="after_show_picture" type="checkbox" value=""/><label for="after_show_picture">显示条状图</label><br>
-					<input name="after_xs" id="after_show_percent" type="checkbox" value=""/><label for="after_show_percent">显示百分比</label><br>
+					<input name="after_xs[]" id="after_show_num" type="checkbox" value="1" checked="checked"/><label for="after_show_num">显示票数</label><br>
+					<input name="after_xs[]" id="after_show_NO" type="checkbox" value="2"/><label for="after_show_NO">显示名次</label><br>
+					<input name="after_xs[]" id="after_show_picture" type="checkbox" value="3"/><label for="after_show_picture">显示条状图</label><br>
+					<input name="after_xs[]" id="after_show_percent" type="checkbox" value="4"/><label for="after_show_percent">显示百分比</label><br>
 				</td>
 				<td>
 					总投票人次显示 <br>
-					<input name="after_zrs" id="after_on" type="radio" value="" checked/><label for="after_on">显示</label><br>
-					<input name="after_zrs" id="after_off" type="radio" value="" /><label for="after_off">不显示</label><br>
+					<input name="after_zrs" id="after_on" type="radio" value="1" checked/><label for="after_on">显示</label><br>
+					<input name="after_zrs" id="after_off" type="radio" value="2" /><label for="after_off">不显示</label><br>
 				</td>
 				<td>
 					总访问量显示 <br>
-					<input name="after_zfw" id="after_view_on" type="radio" value="" checked/><label for="after_view_on">显示</label><br>
-					<input name="after_zfw" id="after_view_off" type="radio" value=""/><label for="after_view_off">不显示</label><br>
+					<input name="after_zfw" id="after_view_on" type="radio" value="1" checked/><label for="after_view_on">显示</label><br>
+					<input name="after_zfw" id="after_view_off" type="radio" value="2"/><label for="after_view_off">不显示</label><br>
 				</td>
 			</tr>
 			<tr>
@@ -108,27 +104,27 @@
 					（投票截止后）</th>
 				<td>
 					排序设置 <br>
-					<input name="end_paixu" id="end_default" type="radio" value="" checked/><label for="end_default">默认预设</label><br>
-					<input name="end_paixu" id="end_desc" type="radio" value=""/><label for="end_desc">票数从大到小</label><br>
-					<input name="end_paixu" id="end_asc" type="radio" value=""/><label for="end_asc">票数从小到大</label><br>
-					<input name="end_paixu" id="end_rand" type="radio" value=""/><label for="end_rand">随机排序</label><br>
+					<input name="end_px" id="end_default" type="radio" value="1" checked/><label for="end_default">默认预设</label><br>
+					<input name="end_px" id="end_desc" type="radio" value="2"/><label for="end_desc">票数从大到小</label><br>
+					<input name="end_px" id="end_asc" type="radio" value="3"/><label for="end_asc">票数从小到大</label><br>
+					<input name="end_px" id="end_rand" type="radio" value="4"/><label for="end_rand">随机排序</label><br>
 				</td>
 				<td>
 					统计显示设置 <br>
-					<input name="end_xianshi" id="end_show_num" type="checkbox" value="" checked="checked"/><label for="end_show_num">显示票数</label><br>
-					<input name="end_xianshi" id="end_show_NO" type="checkbox" value=""/><label for="end_show_NO">显示名次</label><br>
-					<input name="end_xianshi" id="end_show_picture" type="checkbox" value=""/><label for="end_show_picture">显示条状图</label><br>
-					<input name="end_xianshi" id="end_show_percent" type="checkbox" value=""/><label for="end_show_percent">显示百分比</label><br>
+					<input name="end_xs[]" id="end_show_num" type="checkbox" value="1" checked="checked"/><label for="end_show_num">显示票数</label><br>
+					<input name="end_xs[]" id="end_show_NO" type="checkbox" value="2"/><label for="end_show_NO">显示名次</label><br>
+					<input name="end_xs[]" id="end_show_picture" type="checkbox" value="3"/><label for="end_show_picture">显示条状图</label><br>
+					<input name="end_xs[]" id="end_show_percent" type="checkbox" value="4"/><label for="end_show_percent">显示百分比</label><br>
 				</td>
 				<td>
 					总投票人次显示 <br>
-					<input name="end_zongrenshu" id="end_people_on" type="radio" value="" checked/><label for="end_people_on">显示</label><br>
-					<input name="end_zongrenshu" id="end_people_off" type="radio" value=""/><label for="end_people_off">不显示</label><br>
+					<input name="end_zrs" id="end_people_on" type="radio" value="1" checked/><label for="end_people_on">显示</label><br>
+					<input name="end_zrs" id="end_people_off" type="radio" value="2"/><label for="end_people_off">不显示</label><br>
 				</td>
 				<td>
 					总访问量显示 <br>
-					<input name="end_zongfangwen" id="end_view_on" type="radio" value="" checked/><label for="end_view_on">显示</label><br>
-					<input name="end_zongfangwen" id="end_view_off" type="radio" value=""/><label for="end_view_off">不显示</label><br>
+					<input name="end_zfw" id="end_view_on" type="radio" value="1" checked/><label for="end_view_on">显示</label><br>
+					<input name="end_zfw" id="end_view_off" type="radio" value="2"/><label for="end_view_off">不显示</label><br>
 				</td>
 			</tr>
 			<tr>
@@ -142,16 +138,16 @@
 					<input name="phtj" type="radio" id="sort_2" value="2"/><label for="sort_2">投票后或投票截止后才可以查看</label>
 					<input name="phtj" type="radio" id="sort_3" value="3"/><label for="sort_3">投票截止后才可以查看</label><br>
 					排行榜显示项目 <br>
-					<input name="phxm" type="checkbox" id="sort_a" value="1" checked/><label for="sort_a">显示票数</label>
-					<input name="phxm" type="checkbox" id="sort_b" value="2"/><label for="sort_b">显示得票百分比</label>
-					<input name="phxm" type="checkbox" id="sort_c" value="3"/><label for="sort_c">显示条状图</label>
+					<input name="phxm[]" type="checkbox" id="sort_a" value="1" checked/><label for="sort_a">显示票数</label>
+					<input name="phxm[]" type="checkbox" id="sort_b" value="2"/><label for="sort_b">显示得票百分比</label>
+					<input name="phxm[]" type="checkbox" id="sort_c" value="3"/><label for="sort_c">显示条状图</label>
 				</td>
 			</tr>
 			<tr>
 				<th>显示候选项数量</th>
 				<td colspan="4">
-					<input name="xianshixuanxiang" type="radio" id="choose_on" value="1" checked/><label for="choose_on">是</label><br>
-					<input name="xianshixuanxiang" type="radio" id="choose_off" value="1" /><label for="choose_off">否</label>
+					<input name="xsxm" type="radio" id="choose_on" value="1" checked/><label for="choose_on">是</label><br>
+					<input name="xsxm" type="radio" id="choose_off" value="1" /><label for="choose_off">否</label>
 				</td>
 			</tr>
 			<tr>
@@ -176,7 +172,7 @@
 				<td colspan="4">
 					相同内网（wifi），或地理位置很接近的相同运营商的手机网络，IP有可能相同。<br>
 					IP限制是最基本和有效防刷票防攻击技术，如非特殊情况请务必开启！<br>
-					<select name="ip_xianzhi" class="select-container1">
+					<select name="ipxz" class="select-container1">
 						<option value="1">不限</option>
 						<option value="2">一天只能投一次票</option>
 						<option value="3">一天只能投多次票</option>
@@ -187,7 +183,7 @@
 				<th>设备限制</th>
 				<td colspan="4">
 					设备限制并不是十分可靠的防刷票技术，在某些情况下可以绕过限制重复投票，建议应多种放防刷票技术结合使用，请参考教程。！<br>
-					<select name="shebei_xianzhi"  class="select-container1">
+					<select name="sbxz"  class="select-container1">
 						<option value="1">不限</option>
 						<option value="2">一天只能投多次票</option>
 					</select>
@@ -221,7 +217,7 @@
 				<th>投票前强制停留时间</th>
 				<td colspan="4">
 					可要求用户在投票网页停留一定时间才能投票，0则表示不限制。<br>
-					<input name="delay" type="text" value="" class="input" style="padding-left: 10px ">秒
+					<input name="tlsj" type="text" value="" class="input" style="padding-left: 10px ">秒
 				</td>
 			</tr>
 			<tr>
