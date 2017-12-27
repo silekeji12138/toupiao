@@ -8,6 +8,7 @@
  */
 class ActionController extends BaseController
 {
+    //
     public function listAction(){
         $model = new Model('toupiao');
         $sql = "select * from sl_toupiao";
