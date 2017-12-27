@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<th><input name="diaoyong" id="qianru" type="radio" value="" checked/><label for="qianru">嵌入代码：</label><br></th>
-				<td colspan="6">获取一组HTML代码，可将代码嵌入现有网页中用于显示实时投票数据统计图。</td>
+				<td colspan="7">获取一组HTML代码，可将代码嵌入现有网页中用于显示实时投票数据统计图。</td>
 			</tr>
 		</table>
 		<table class="table table-info cs-table">
@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<th>形状</th>
-				<td colspan="6">
+				<td colspan="7">
 					<input name="shape" id="strip" type="radio" value="" checked/><label for="strip">条形</label>
 					<input name="shape" id="Column" type="radio" value="" /><label for="Column">柱状</label>
 					<input name="shape" id="cookie" type="radio" value=""/><label for="cookie">饼型</label>
@@ -104,25 +104,6 @@
 	if(!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
 		new WOW().init();
 	};
-	
-	///index.php?p=admin&c=filed&a=Zh2Py&Zh_str=龚华尧
-    //将输入的中文转换为拼音
-    $("#u2").blur(function(){
-    	var re_str=$.ajax({url:"index.php?p=admin&c=filed&a=Zh2Py&model_id=<?php echo $_GET["model_id"]?>&Zh_str="+$("#u2").val(),async:false}).responseText;
-    	var re_json=JSON.parse(re_str);
-    	if(re_json.status=="true")
-    		{
-    		var u1_value=re_json.content;
-            $("#u1").val(u1_value);
-    		}
-    	else
-    		{
-    		alert(re_json.content);
-    		
-    		}
-        
-    
-    });
 	
 </script>
 </body>

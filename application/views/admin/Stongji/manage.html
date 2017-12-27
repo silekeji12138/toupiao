@@ -49,23 +49,24 @@
 				<th>状态</th>
 				<th >操作</th>
 			</tr>
-
+			<?php $i=1;foreach($list as $v):?>
 			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
-				<td>正常</td>
+				<td><?=$i++?></td>
+				<td><?=$v['title']?></td>
+				<td>12</td>
+				<td class="status">正常</td>
 				<td>
-					<a href="javascript:;"  id="add">增加票数</a>&emsp;<a href="javascript:;" id="reduce">减少票数</a>&emsp;
-					<a href="javascript:;" id="lock">锁定</a>
+					<a href="javascript:;" name="<?=id?>" class="add">增加票数</a>&emsp;<a href="javascript:;" class="reduce" name="<?=id?>">减少票数</a>&emsp;
+					<a href="javascript:;" class="lock" name="<?=id?>">锁定</a>
 				</td>
 			</tr>
+			<?php endforeach;?>
 		</table>
 	<p style="text-align: right;padding: 20px 0"><a href="index.php?p=admin&c=tongji&a=log" style="color: #0B61A4">查询票数修改记录</a></p>
 		<h4 style="color: #0B61A4">票数归零重置</h4>
 		<table class="table table-border" style="text-align: left">
 			<tr><td>将本投票活动的所有投票数据归零重置，即变为初始状态，所有选项票数为0，该操作不可逆，请谨慎操作！</td></tr>
-			<tr><td><a href="" class="btn btn-default" style="cursor: pointer">投票数据重置归零</a></td></tr>
+			<tr><td><button type="button" id="clear" class="btn btn-default" style="cursor: pointer">投票数据重置归零</button></td></tr>
 		</table>
 		<h4 style="color: #0B61A4">历史总访问量管理</h4>
 		<table class="table table-border" style="text-align: left">
@@ -101,7 +102,7 @@
 				$(".a-info .collapse").fadeToggle();
 			})
 //			增加票数
-			$("#add").click(function () {
+			$(".add").click(function () {
 				layer.prompt({title: '增加票数', formType: 0}, function(number1, index){
 					layer.close(index);
 					layer.prompt({title: '增加总投票人数', formType: 0}, function(number2, index){
@@ -111,7 +112,8 @@
                             if (!isNaN(number1) && !isNaN(number2)) {
                                 $.post("/index.php?p=admin&c=tongji&a=increase", {
                                     "num1": number1,
-                                    "num2": number2
+                                    "num2": number2,
+									"reason":reason,
                                 }, function (data) {
                                     if (data == 1) {
                                         layer.msg('增加票数：' + number1 + '<br>增加总投票人数：' + number2);
@@ -127,7 +129,7 @@
 				});
 			})
 			//减少票数
-            $("#reduce").click(function () {
+            $(".reduce").click(function () {
                 layer.prompt({title: '减少票数', formType: 0}, function(num1, index){
                     layer.close(index);
                     layer.prompt({title: '减少总投票人数', formType: 5}, function(num2, index){
@@ -135,7 +137,7 @@
                         layer.prompt({title: '减少原因', formType: 2}, function(reason, index) {
                             layer.close(index);
                             if(!isNaN(num1)&&!isNaN(num2)){
-                                $.post("/index.php?p=admin&c=tongji&a=decrease",{"num1":num1,"num2":num2},function (data) {
+                                $.post("/index.php?p=admin&c=tongji&a=decrease",{"num1":num1,"num2":num2,"reason":reason},function (data) {
                                     if(data==1){
                                         layer.msg('减少票数：'+ num1 +'<br>减少总投票人数：'+num2);
                                     }else{
@@ -146,20 +148,19 @@
                                 layer.msg("请输入整数",{icon:5})
                             }
                         })
-
-
                     });
                 });
             })
             //锁定
-            $("#lock").click(function () {
+            $(".lock").click(function () {
                 var that = $(this);
                 layer.prompt({title: '锁定禁止投票,当用户选择该投票项时弹出的提示信息：', formType: 2}, function(text, index){
                     layer.close(index);
-					$.post("/index.php?p=admin&c=tongji&a=lock",{},function (data) {
+					$.post("/index.php?p=admin&c=tongji&a=lock",{"mes":text},function (data) {
 						if(data==1){
-                            layer.msg('操作成功',{icon: 1});
-                            that.closest("td").append("<a href='javascript:;' id='unlock'>解除锁定</a>");
+                            layer.msg('操作成功',{icon: 4});
+                            that.closest("tr").find(".status").text("锁定："+text);
+                            that.closest("td").append("<a href='javascript:;' class='unlock'>解除锁定</a>");
                             that.css("display","none");
 						}else{
 							layer.msg("操作失败",{icon: 2});
@@ -168,9 +169,17 @@
 				});
             })
 			//解锁
-			$("table").on("click","#unlock",function () {
+			$("table").on("click",".unlock",function () {
+                layer.msg("解锁成功",{icon: 6});
+                $(".status").text("正常");
 				$(this).remove();
-				$("#lock").css("display","inline-block")
+				$(".lock").css("display","inline-block")
+            })
+			//全部清零
+			$("#clear").click(function () {
+			    if (confirm("此操作不可逆，确定执行该操作？")){
+                    window.location.href="index.php?p=admin&c=tongji&a=";
+                }
             })
 		</script>
 

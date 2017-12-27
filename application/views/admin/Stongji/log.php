@@ -41,9 +41,9 @@
 				<!--上边信息-->
 		<h2 style="padding: 10px">票数修改日志</h2>
         <div class="btn-group" role="group" style="padding: 5px">
-            <a href="" class="btn btn-blue">全部</a>
-            <a href="" class="btn btn-blue">直接改票</a>
-            <a href="" class="btn btn-blue">被作废票</a>
+            <a href="index.php?p=admin&c=tongji&a=log" class="btn btn-blue">全部</a>
+            <a href="index.php?p=admin&c=tongji&a=log&type=1" class="btn btn-blue">直接改票</a>
+            <a href="index.php?p=admin&c=tongji&a=log&type=2" class="btn btn-blue">被作废票</a>
         </div>
 
 		<table class="table table-border table-hover" style="text-align: center">
@@ -54,14 +54,15 @@
 				<th>操作原因</th>
 				<th >投票时间</th>
 			</tr>
-
+            <?php foreach ($list as $v):?>
 			<tr>
-				<td><?=date("Y-m-d H:i",time())?></td>
-				<td>增加</td>
-				<td>增加3票，增加5人</td>
-				<td>延迟</td>
-				<td><?=date("Y-m-d H:i",time())?></td>
+				<td><?=$v['update_time']?></td>
+				<td><?=$v['type']?></td>
+				<td><?=$v['type'].$v['num1']?>票<?=$v['type']=='作废'?"":"，".$v['type'].$v['num2']."人"?></td>
+				<td><?=$v['reason']?></td>
+				<td><?=$v['update_time']?></td>
 			</tr>
+            <?php endforeach;?>
 		</table>
 <footer>
 	<?php include CUR_VIEW_PATH."public/footer.html"?>

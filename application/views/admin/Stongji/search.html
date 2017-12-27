@@ -71,7 +71,9 @@
 							<!--选项为投票活动名称-->
 							<td>
 								<select name="name" class="select-container1">
-									<option value="">请选择</option>
+									<?php foreach($list as $v):?>
+									<option value="<?=$v['id']?>"><?=$v['title']?></option>
+									<?php endforeach;?>
 								</select>
 							</td>
 						</tr>
