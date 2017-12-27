@@ -1,5 +1,9 @@
 <?php
 //导入数据控制器
+
+/**
+ * msi LW 标识
+ */
 class ToupiaoController extends BaseController{
 	
 	 
@@ -60,7 +64,7 @@ class ToupiaoController extends BaseController{
 
 	    include CUR_VIEW_PATH . "Stoupiao" . DS ."three.html";
     }
-    //投票第三步的操作
+    //投票第三步的操作->添加规则
     public function three1Action(){
         $data=$_POST;
 
@@ -73,7 +77,6 @@ class ToupiaoController extends BaseController{
         $data['end']=strtotime($data['end']);
         $model=new model('rule');
         $model->xg($data,$_GET['action_id']);
-        $this->jump('www.baidu.com','','');
 //            var_dump(implode(',',$data['xs']));
 //            var_dump(implode(',',$data['after_xs']));
 //            var_dump(implode(',',$data['end_xianshi']));
@@ -81,6 +84,7 @@ class ToupiaoController extends BaseController{
 //            var_dump(implode(',',$data['tpqd']));
 //            var_dump(strtotime($data['start']));
 //            var_dump(strtotime($data['end']));
+        $this->jump('index.php?p=admin&c=action&a=list','添加成功',2);
     }
     //菜单显示界面
     public function menuAction(){
