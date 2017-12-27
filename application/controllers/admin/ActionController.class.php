@@ -6,7 +6,7 @@
  * Date: 2017/12/27
  * Time: 15:28
  */
-class ActionController extends BaseController
+class ActionController extends PlateformController
 {
     //
     public function listAction(){
@@ -22,8 +22,6 @@ class ActionController extends BaseController
         $model = new Model('two');
         $sql = "select *from sl_two WHERE action_id={$action_id}";
         $list = $model->select($sql);
-//        var_dump($sql);die;
-
         include CUR_VIEW_PATH . "Stoupiao" . DS ."action_vote.html";
     }
 }
