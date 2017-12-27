@@ -17,12 +17,12 @@ class ActionController extends BaseController
     public function indexAction(){
         $action_id = $_GET['action_id'];
         //将action_id存入cookie
-        if (isset($_COOKIE['action_id'])){
-            setcookie('action_id',$action_id,time()+3600,"/");
-            var_dump($_COOKIE['action_id']);die;
-        }else{
-            setcookie('action_id',$action_id,time()+3600,"/");
-        }
+        setcookie('action_id',$action_id,time()+3600,"/");
+        $model = new Model('two');
+        $sql = "select *from sl_two WHERE action_id={$action_id}";
+        $list = $model->select($sql);
+//        var_dump($sql);die;
 
+        include CUR_VIEW_PATH . "Stoupiao" . DS ."action_vote.html";
     }
 }
