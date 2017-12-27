@@ -37,7 +37,7 @@
 		<!--当前位置 end-->
 		<br/>
 		
-    <form method="post" action="index.php?p=admin&c=toupiao&a=edit&model_id=<?php echo $_GET['model_id'] ?>" name='theForm' id="theForm" enctype="multipart/form-data">
+    <form method="post" action="index.php?p=admin&c=toupiao&a=menuadd" name='theForm' id="theForm" enctype="multipart/form-data">
 		<section class="pos-relative">
 			<!--发布文章中间部分-->
 			<article class="article-edit">
@@ -49,19 +49,16 @@
 							<td><a style="font-size: x-large">系统默认菜单开关</a></td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="menu" value="1">首页</td>
+							<td><input type="checkbox" name="menu[]" value="1">首页</td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="menu" value="2">排行榜:排行榜条件请另行设置</td>
+							<td><input type="checkbox" name="menu[]" value="3">搜索:这里只是隐藏菜单，网页会隐藏搜索栏</td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="menu" value="3">搜索:这里只是隐藏菜单，网页会隐藏搜索栏</td>
+							<td><input type="checkbox" name="menu[]" value="4">评论:开启/关闭评论</td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="menu" value="4">评论:开启/关闭评论</td>
-						</tr>
-						<tr>
-							<td><input type="radio" name="menu" value="5">报名:开启/关闭报名</td>
+							<td><input type="checkbox" name="menu[]" value="5">报名:开启/关闭报名</td>
 						</tr>
 				    </table>
 

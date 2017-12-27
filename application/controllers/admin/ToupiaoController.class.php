@@ -16,20 +16,79 @@ class ToupiaoController extends BaseController{
 	public function twoAction(){
         include CUR_VIEW_PATH . "Stoupiao" . DS ."two.html";
     }
-    public function two1Action(){
-	    var_dump($_POST);
+    public function two1Action()
+    {
+        $data1['action_id'] = $_GET['action_id'];
+        $data = $_POST;
+        for ($i=0;$i<count($data['neirong']);$i++){
+            $data1['neirong']=$data['neirong'][$i];
+            $data1['stroy']=$data['stroy'][$i];
+            $data1['biaoti']=$data['biaoti'][$i];
+            $data1['header']=$data['header'][$i];
+            $model=new model('two');
+            $model->insert($data1);
+          }
+          $data2['action_id'] = $_GET['action_id'];
+          $data2['dnpx']=$data['dnpx'];
+          $data2['sjpx']=$data['sjpx'];
+          $data2['fy']=$data['fy'];
+          $data2['sousuo']=$data['sousuo'];
+          $model=new model('rule');
+          $model->insert($data2);
+
+          $this->jump('http://www.ggg.com/index.php?p=admin&c=toupiao&a=three&action_id='.$_GET['action_id'],'',0);
+//        foreach ($data['neirong'] as $v) {
+//             $data1['neirong']=$v;
+//             foreach ($data['biaoti'] as $s){
+//                 $data1['biaoti']=$s;
+//                 foreach ($data['stroy'] as $s1) {
+//                     $data1['stroy']=$s1;
+//                       foreach ($data['header'] as $s2){
+//                           $data1['header']=$s2;
+//                           var_dump($data1);
+//                           continue;
+//                       }
+//                     continue;
+//                 }
+//                 continue;
+//             }
+//        }
+
     }
     //投票的第三部
     public function threeAction(){
-	    $data=$_POST;
-	    if ($data!=''){
-	        var_dump(111111);
-        }
+
 	    include CUR_VIEW_PATH . "Stoupiao" . DS ."three.html";
+    }
+    //投票第三步的操作
+    public function three1Action(){
+        $data=$_POST;
+
+        $data['xs']=implode(',',$data['xs']);
+        $data['after_xs']=implode(',',$data['after_xs']);
+        $data['end_xs']=implode(',',$data['end_xs']);
+        $data['phxm']=implode(',',$data['phxm']);
+        $data['tpqd']=implode(',',$data['tpqd']);
+        $data['start']=strtotime($data['start']);
+        $data['end']=strtotime($data['end']);
+        $model=new model('rule');
+        $model->xg($data,$_GET['action_id']);
+        $this->jump('www.baidu.com','','');
+//            var_dump(implode(',',$data['xs']));
+//            var_dump(implode(',',$data['after_xs']));
+//            var_dump(implode(',',$data['end_xianshi']));
+//            var_dump(implode(',',$data['phxm']));
+//            var_dump(implode(',',$data['tpqd']));
+//            var_dump(strtotime($data['start']));
+//            var_dump(strtotime($data['end']));
     }
     //菜单显示界面
     public function menuAction(){
         include CUR_VIEW_PATH . "Stoupiao" . DS ."menu.html";
+    }
+    //菜单提交
+    public function menuaddAction(){
+        var_dump($_POST);
     }
     //编辑菜单显示的页面
     public function menueditAction(){
@@ -125,7 +184,7 @@ class ToupiaoController extends BaseController{
     public function imageAction(){
         $filename ="./public/uploads/fengmiantu/".time().$_FILES['file']['name'];
         move_uploaded_file($_FILES["file"]["tmp_name"],$filename);//将临时地址移动到指定地址
-        echo json_encode($_FILES);
+        echo $filename;
     }
 
 
@@ -149,102 +208,14 @@ class ToupiaoController extends BaseController{
 
 
 
-
+//活动添加跳转
 	public function insertAction(){
-	    var_dump($_POST);die;
-	    require_once(LIB_PATH."PHPExcel-1.8".DS."Classes".DS."PHPExcel.php");
-	    $filename="";
-	    //上传文件到服务器
-	    $this->library("Upload"); //载入文件上传类
-	    $upload = new Upload(); //实例化上传对象
-	    if ($filename = $upload->up($_FILES["wenjian"])){
-	        //成功
-	        echo "上传文件成功<br/>";
-	        flush();
-	         
-	    }
-        
-	    //导入的表名
-        $t = $_REQUEST["t"];	
-        if(empty($t))
-        {
-            echo "请选择需要导入的表";
-            die();
-        }
-        
-       
-        //文件名为文件路径和文件名的拼接字符串
-        //$objReader = \PHPExcel_IOFactory::createReader('Excel5');//创建读取实例
-        $objPHPExcel = PHPExcel_IOFactory::load($filename);//加载文件
-        $sheet = $objPHPExcel->getSheet(0);//取得sheet(0)表
-        $highestRow = $sheet->getHighestRow(); // 取得总行数
-        $highestColumn = $sheet->getHighestColumn(); // 取得总列数
-        
-        //设置村关系
-        //如果是村管理员1
-        $adminModel = new AdminModel('admin');
-        $user = $adminModel->selectByPk($_SESSION['admin']['user_id']);
-        //村ID
-        $cun_id =  $user["cun_id"];
-        
-        //导入员工
-        if($t="user")
-        {
-            $userModel = new Model("user");
-            for($i=2;$i<=$highestRow;$i++)
-            {
-                $data['yonghuming']=$objPHPExcel->getActiveSheet()->getCell("A".$i)->getValue();
-                $data['xingming'] = $objPHPExcel->getActiveSheet()->getCell("B".$i)->getValue();
-                $data['mima'] =md5(substr($data['yonghuming'],5,6));
-                $data['suoshucun']=$cun_id;
-                $data['suoshuzu']=$cun_id;
-                $data['daorurenxinxi']="姓名:".$user["nickname"]." 用户名:".$user["username"];
-                
-                if(count($userModel->select("select * from sl_user where yonghuming='{$data['yonghuming']}' "))>0)
-                {
-                    //用户名已存在
-                    echo $data['yonghuming']."导入失败：用户名已存在<br/>";
-                    continue;
-                }else
-                {
-                    $userModel->insert($data);
-                    echo $data['yonghuming']."导入成功<br/>";
-                    flush();
-                }
-                
-            }
-        }else if($t="renyuan") //导入人员
-        {
-           $renyuanModel = new model("renyuan");
-           for($i=2;$i<=$highestRow;$i++)
-           {
-               $data['yonghuming']=$objPHPExcel->getActiveSheet()->getCell("A".$i)->getValue();
-               $data['xingming'] = $objPHPExcel->getActiveSheet()->getCell("B".$i)->getValue();
-              
-               
-               if(count($userModel->select("select * from sl_user where yonghuming='{$data['yonghuming']}' "))>0)
-               {
-                   //用户名已存在
-                   echo $data['yonghuming']."导入失败：用户名已存在<br/>";
-                   continue;
-               }else
-               {
-                   $userModel->insert($data);
-                   echo $data['yonghuming']."导入成功<br/>";
-                   flush();
-               }
-               
-           }
-           
-           
-        }else if($t="huji") //导入户籍
-        {
-            
-        }
-       
-	       
+	    $data=$_POST;
+	    $model=new model('toupiao');
+        $model->insert($data);
+        $id=mysql_insert_id();
+        $this->jump("index.php?p=admin&c=toupiao&a=two&id=$id",'',0);
 
-		
 	}
  
 }
