@@ -18,7 +18,7 @@ class TongjiController extends PlateformController
 
             include CUR_VIEW_PATH . "Stongji" . DS ."detail.html";
         }
-        $sql = "select id,title from sl_two WHERE action_id = $action_id";
+        $sql = "select id,biaoti from sl_two WHERE action_id = $action_id";
         $list = $model->select($sql);
         //加载查询视图
         include CUR_VIEW_PATH . "Stongji" . DS ."search.html";
