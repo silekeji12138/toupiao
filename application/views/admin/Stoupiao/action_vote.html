@@ -54,14 +54,14 @@
 			<?php foreach($list as $v):?>
 			<tr id="<?php echo $v['id'] ?>">
 				<td><?=$v['id']?></td>
-				<td><?=$v['title']?></td>
+				<td><?=$v['biaoti']?></td>
 				<td><?=$v['people']?></td>
 				<td><?=$v['num']?></td>
 				<td><?=$v['tel']?></td>
-				<td><img src="<?=$v['header']?>" alt="封面" width="60px"></td>
+				<td><img src="<?=$v['header']?>" alt="封面21" width="60px"></td>
 				<td><?=date("Y-m-d H:i",$v['add_time'])?></td>
 				<td>
-					<a href="" title="编辑" class="operation"><span class="ficon ficon-xiugai"></span></a>
+					<a href="index.php?p=admin&c=toupiao&a=addtwo&action_id=<?=$_GET['action_id']?>&id=<?php echo $v['id'] ?>" title="编辑" class="operation"><span class="ficon ficon-xiugai"></span></a>
 					<a id="del" href="javascript:;" title="删除" class="operation"><span class="ficon  ficon-shanchu"></span></a>
 				</td>
 			</tr>
@@ -69,6 +69,7 @@
 			<tr>
 				<td style="text-align: left" colspan="8">
 					<button class="btn btn-default" style="cursor: pointer">导出EXCEL</button>
+					<a href="index.php?p=admin&c=toupiao&a=addtwo2&action_id=<?=$_GET['action_id']?>" class="btn btn-default" style="cursor: pointer">添加</a>
 				</td>
 			</tr>
 		</table>

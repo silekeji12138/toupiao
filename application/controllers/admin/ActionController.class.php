@@ -6,7 +6,7 @@
  * Date: 2017/12/27
  * Time: 15:28
  */
-class ActionController extends PlateformController
+class ActionController extends BaseController
 {
     //
     public function listAction(){
@@ -43,5 +43,11 @@ class ActionController extends PlateformController
         $rs->dl('action_id='.$id);
         $rs1=new model('rule');
         $rs1->dl('action_id='.$id);
+    }
+    /**
+     * 测试功能
+     */
+    public function textAction(){
+        echo '';
     }
 }
