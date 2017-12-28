@@ -42,7 +42,7 @@
 		<!--当前位置 end-->
 		<br/>
 		
-    <form method="post" action="index.php?p=admin&c=toupiao&a=bianjitwo&model_id=<?php echo $_GET['model_id'] ?>" name='theForm' id="theForm" enctype="multipart/form-data">
+    <form method="post" action="index.php?p=admin&c=toupiao&a=addtwo1&action_id=<?=$_GET['action_id']?>&id=<?=$result[0]['id']?>" name='theForm' id="theForm" enctype="multipart/form-data">
 		<section class="pos-relative">
 			<!--发布文章中间部分-->
 			<article class="article-edit">
@@ -50,74 +50,46 @@
 				<div class="article-top">
 				 	 
 				    <table class="a-info">
-						<a href="javascript:;" id="add1">添加选项</a>
-                        <tr>
-					     	<td width="100">投票候选项</td>
-						    <td id="add">
-							<input name="biaoti[]" type="text" class="input">
-					  	</td>
-				     	</tr>
 						<tr>
-							<td>投票选项分页</td>
+							<td style="width: 100px">标题</td>
 							<td>
-								<input name="fenye" type="radio" value="1">分页
-								<input name="fenye" type="radio" value="2">不分页
+								<input value="<?=$result[0]['biaoti']?>" name="biaoti" type="text" placeholder="请填写活动标题" class="input">
 							</td>
 						</tr>
 						<tr>
-							<td>启用搜索功能</td>
+							<td style="width: 100px">选手</td>
 							<td>
-								<input name="fenye" type="radio" value="1">不启用
-								<input name="fenye" type="radio" value="2">启用
+								<input value="<?=$result[0]['people']?>" name="people" type="text" placeholder="请填写姓名" class="input">
 							</td>
 						</tr>
 						<tr>
-							<td>排版设置</td>
+							<td style="width: 100px">联系方式</td>
 							<td>
-								每行显示选项数(电脑版)&nbsp;
-								<input name="paiban" type="radio" value="2">2&nbsp;
-								<input name="pc_paiban" type="radio" value="3">3&nbsp;
-								<input name="pc_paiban" type="radio" value="4">4&nbsp;
-								<input name="pc_paiban" type="radio" value="5">5&nbsp;<br>
-								每行显示选项数(移动版)&nbsp;
-								<input name="paiban" type="radio" value="1">1&nbsp;
-								<input name="paiban" type="radio" value="2">2&nbsp;
-								<input name="paiban" type="radio" value="3">3&nbsp;
+								<input value="<?=$result[0]['tel']?>" name="tel" type="text" placeholder="请填写电话号码" class="input">
+							</td>
+						</tr>
+						<tr>
+							<td>内容描述</td>
+							<td>
+								<input value="<?=$result[0]['neirong']?>" name="neirong" type="text" placeholder="请填写内容描述" class="input">
+							</td>
+						</tr>
+						<tr>
+							<td>故事描述</td>
+							<td>
+								<input value="<?=$result[0]['stroy']?>" name="stroy" type="text" placeholder="请填写活动标题" class="input">
+							</td>
+						</tr>
+						<tr>
+							<td>封面图</td>
+							<td>
+								<input value="<?=$result[0]['header']?>" type="hidden" name="img">
+								<input  name="file" type="file">
 							</td>
 						</tr>
 					</table>
 			</article>
 			<!--发布文章 侧边-->
-			<aside class="article-side">
-				<div class="box">
-				
-				<!-- 时间部分 -->
-				<?php foreach($filedLists as $v){ ?>
-                         
-                    <?php if($v['u7']=="时间框" ){ ?>
-                    
-					    <?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,"",$v['u3'] ,$v['id']) ?>
-                          
-				   <?php } ?>
-                       
-               <?php } ?>  
-				    
-				<!-- 数字部分 -->  
-			   <?php foreach($filedLists as $v){ ?>
-                         
-                    <?php if($v['u7']=="数字" ){ ?>
-                    
-                        <?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,"",$v['u3'] ,$v['id']) ?>
-                    
-                     <?php } ?>
-                       
-               <?php } ?>  
-               
-               
-				 
-				</div>
-			</aside>
-			
 			<p>
 				<tr>
 				<th></th>

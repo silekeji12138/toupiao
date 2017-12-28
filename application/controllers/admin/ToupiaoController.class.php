@@ -18,17 +18,20 @@ class ToupiaoController extends BaseController{
 	}
    //投票的活动的第二步
 	public function twoAction(){
-        include CUR_VIEW_PATH . "Stoupiao" . DS ."two.html";
+        include CUR_VIEW_PATH . "Stoupiao" . DS ."toupiao_two.html";
     }
     public function two1Action()
     {
         $data1['action_id'] = $_GET['action_id'];
+        $data1['addtime']=time();
         $data = $_POST;
         for ($i=0;$i<count($data['neirong']);$i++){
             $data1['neirong']=$data['neirong'][$i];
             $data1['stroy']=$data['stroy'][$i];
             $data1['biaoti']=$data['biaoti'][$i];
             $data1['header']=$data['header'][$i];
+            $data1['tel']=$data['tel'][$i];
+            $data1['people']=$data['people'][$i];
             $model=new model('two');
             $model->insert($data1);
           }
@@ -62,7 +65,7 @@ class ToupiaoController extends BaseController{
     //投票的第三部
     public function threeAction(){
 
-	    include CUR_VIEW_PATH . "Stoupiao" . DS ."three.html";
+	    include CUR_VIEW_PATH . "Stoupiao" . DS ."toupiao_three.html";
     }
     //投票第三步的操作->添加规则
     public function three1Action(){
@@ -88,7 +91,7 @@ class ToupiaoController extends BaseController{
     }
     //菜单显示界面
     public function menuAction(){
-        include CUR_VIEW_PATH . "Stoupiao" . DS ."menu.html";
+        include CUR_VIEW_PATH . "Stoupiao" . DS ."toupiao_menu.html";
     }
     //菜单提交
     public function menuaddAction(){
@@ -96,7 +99,7 @@ class ToupiaoController extends BaseController{
     }
     //编辑菜单显示的页面
     public function menueditAction(){
-        include CUR_VIEW_PATH . "Stoupiao" . DS ."menu.html";
+        include CUR_VIEW_PATH . "Stoupiao" . DS ."toupiao_menu.html";
     }
     //编辑活动
     public function bianjiAction(){
@@ -104,7 +107,7 @@ class ToupiaoController extends BaseController{
         $model_id = 85;
         // 获取autotable_id
 //        $autotable_id = $_GET['id'];
-        $autotable_id = 1;
+        $autotable_id = $_GET['action_id'];
         //得到字段模型
         $filedModel=new Model("filed");
         $filedLists=$filedModel->select("select * from sl_filed where model_id='{$model_id}'  order by  u10 asc,id desc ");//显示查询字段
@@ -114,58 +117,100 @@ class ToupiaoController extends BaseController{
         $tableName = $moxingModel->oneRowCol("u1", "id={$model_id}")['u1'];
         //先获取文章信息
         $tableModel = new Model($tableName);
-
         $autotable = $tableModel->selectByPk($autotable_id);
         //var_dump($autotable);die();
-        include CUR_VIEW_PATH . "Stoupiao" . DS . "bianji.html";
+        //1111111111111111111111111111111111111111111111111111111111111111111111111
+        include CUR_VIEW_PATH . "Stoupiao" . DS . "toupiao_bianji.html";
     }
     //编辑活动显示
     public function editAction(){
-        var_dump($_POST);die;
+        $id=$_GET['id'];
+        $model=new model('toupiao');
+        $data=$_POST;
+        $model->xg($data,"id=".$id);
+        $this->jump('index.php?p=admin&c=action&a=list','',0);
     }
     //编辑two
     public function bianjitwoAction(){
-        include CUR_VIEW_PATH . "Stoupiao" . DS . "bianjitwo.html";
+        include CUR_VIEW_PATH . "Stoupiao" . DS . "toupiao_bianjitwo.html";
     }
     //edittwo
     public function edittwoAction(){
          var_dump($_POST);
     }
-
-
+    //投票的选项修改
+    public function addtwoAction(){
+        $id=$_GET['id'];
+        $model=new model('two');
+        $result = $model->select('select *from sl_two WHERE id='.$id);
+        include CUR_VIEW_PATH . "Stoupiao" . DS . "toupiao_addtwo.html";
+    }
+    //具体添加投票选项
+    public function addtwo2Action(){
+        if ($_SERVER['REQUEST_METHOD']=='POST'){
+            $action_id=$_GET['action_id'];
+            $data=$_POST;
+            $model=new model('two');
+            $data['action_id']=$action_id;
+            $filename ="./public/uploads/fengmiantu/".time().$_FILES['file']['name'];
+            move_uploaded_file($_FILES["file"]["tmp_name"],$filename);
+            $data['header']=$filename;
+            $model->insert($data);
+            $this->jump("index.php?p=admin&c=action&a=index&action_id={$action_id}",'',0);
+        }
+        include CUR_VIEW_PATH . "Stoupiao" . DS . "toupiao_addthree.html";
+    }
+    //具体投票选项的修改
+    public function addtwo1Action(){
+        $data=$_POST;
+        $action_id=$_GET['action_id'];
+        $id=$_GET['id'];
+        $model=new model('two');
+        if ($_FILES['file']['tmp_name']!=''){
+            $filename ="./public/uploads/fengmiantu/".time().$_FILES['file']['name'];
+            move_uploaded_file($_FILES["file"]["tmp_name"],$filename);
+            $data['header']=$filename;
+            unset($data['img']);
+        }else{
+            $data['header']=$data['img'];
+            unset($data['img']);
+        }
+        $model->xg($data,"id=$id");
+        $this->jump("index.php?p=admin&c=action&a=index&action_id={$action_id}",'',0);
+    }
     /**
      * 下方是投票设置的具体选项
      */
     //基本设置
     public function shezhijbAction(){
-        include CUR_VIEW_PATH . "Sshezhi" . DS ."three.html";
+        include CUR_VIEW_PATH . "Sshezhi" . DS ."shezhi_three.html";
     }
     //微信的访问的设置
     public function shezhiwxAction(){
-        include CUR_VIEW_PATH . "Sshezhi" . DS ."shezhiwx.html";
+        include CUR_VIEW_PATH . "Sshezhi" . DS ."shezhi_shezhiwx.html";
     }
     //投票规则的设置
     public function shezhigzAction(){
-        include CUR_VIEW_PATH . "Sshezhi" . DS ."guize.html";
+        include CUR_VIEW_PATH . "Sshezhi" . DS ."shezhi_guize.html";
     }
     /**
      * 下面是投票功能的具体擦做
      */
     //邀请码显示界面
     public function yaoqingmaAction(){
-        include CUR_VIEW_PATH . "Sgongneng" . DS ."yaoqingma.html";
+        include CUR_VIEW_PATH . "Sgongneng" . DS ."gongneng_yaoqingma.html";
     }
     //评论显示设置界面
     public function pinglunAction(){
-        include CUR_VIEW_PATH . "Sgongneng" . DS ."pinglun.html";
+        include CUR_VIEW_PATH . "Sgongneng" . DS ."gongneng_pinglun.html";
     }
     //报名显示设置界面
     public function baomingAction(){
-        include CUR_VIEW_PATH . "Sgongneng" . DS ."baoming.html";
+        include CUR_VIEW_PATH . "Sgongneng" . DS ."gongneng_baoming.html";
     }
     //抽奖显示设置界面
     public function choujiangAction(){
-        include CUR_VIEW_PATH . "Sgongneng" . DS ."choujiang.html";
+        include CUR_VIEW_PATH . "Sgongneng" . DS ."gongneng_choujiang.html";
     }
     //抽奖信息的添加的界面
     public function choujiang1Action(){
@@ -174,7 +219,7 @@ class ToupiaoController extends BaseController{
     }
     //礼物的设置界面
     public function liwuAction(){
-        include CUR_VIEW_PATH . "Sgongneng" . DS ."liwu.html";
+        include CUR_VIEW_PATH . "Sgongneng" . DS ."gongneng_liwu.html";
     }
 
 

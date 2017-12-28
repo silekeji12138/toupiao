@@ -3,12 +3,13 @@
 
 <head>
 	<?php include CUR_VIEW_PATH."public/head.html"?>
-	
-	            <!-- 编辑器配置文件 -->
-                 <script type="text/javascript" src="application/views/admin/js/ueditor/ueditor.config.js"></script>
-                 <!-- 编辑器源码文件 -->
-                <script type="text/javascript" src="application/views/admin/js/ueditor/ueditor.all.js"></script>
-                 <!-- 实例化编辑器 -->
+	 <!--编辑器-->
+	 <!-- 编辑器配置文件 -->
+     <script type="text/javascript" src="application/views/admin/js/ueditor/ueditor.config.js"></script>
+     <!-- 编辑器源码文件 -->
+     <script type="text/javascript" src="application/views/admin/js/ueditor/ueditor.all.js"></script>
+     <!-- 实例化编辑器 -->
+    
 </head>
 
 <body class="body-color">
@@ -36,7 +37,7 @@
 		<!--当前位置 end-->
 		<br/>
 		
-    <form method="post" action="index.php?p=admin&c=autotable&a=update&model_id=<?php echo $_GET['model_id'] ?>" name='theForm' id="theForm" enctype="multipart/form-data">
+    <form method="post" action="index.php?p=admin&c=toupiao&a=edit&model_id=<?php echo $_GET['model_id'] ?>&id=<?php echo $_GET['action_id'] ?>" name='theForm' id="theForm" enctype="multipart/form-data">
 		<section class="pos-relative">
 			<!--发布文章中间部分-->
 			<article class="article-edit">
@@ -44,64 +45,36 @@
 				<div class="article-top">
 				 	 
 				    <table class="a-info">
-		             
+				             
 				      <?php foreach($filedLists as $v){ ?>
                          <?php if($v['u7']!="文本编辑器" and $v['u7']!="时间框" and $v['u7']!="数字"){ ?>
 
-                            <?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,$autotable[$v['u1']],$v['u3'] ,$v['id']) ?>
-				    	   
-                            
+						<?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,$autotable[$v['u1']],$v['u3'] ,$v['id']) ?>
+
                          <?php } ?>
                       <?php } ?>
 				    </table>
+
 				</div>
-				<!--编辑器-->
 				
-				
-    
 				<?php foreach($filedLists as $v){ ?>
                          
                     <?php if($v['u7']=="文本编辑器" ){ ?>
-                   
-                       <?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,$autotable[$v['u1']],$v['u3'] ,$v['id']) ?>
-				    	    
-				    	   
+
+				<?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,$autotable[$v['u1']],$v['u3'] ,$v['id']) ?>
+                          
                     <?php } ?>
                        
                <?php } ?>
+
+
+
+
+
 				
 			</article>
 			<!--发布文章 侧边-->
-			<aside class="article-side">
-				<div class="box">
-				
-				<!-- 时间部分 -->
-				<?php foreach($filedLists as $v){ ?>
-                         
-                    <?php if($v['u7']=="时间框" ){ ?>
-                    
-					    <?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,$autotable[$v['u1']],$v['u3'] ,$v['id']) ?>
-				    	
-				   <?php } ?>
-                       
-               <?php } ?>  
-				    
-				<!-- 数字部分 -->  
-			   <?php foreach($filedLists as $v){ ?>
-                         
-                    <?php if($v['u7']=="数字" ){ ?>
-                    
-                        <?php echo $this->getKj($v['u7'],$v['u2'],$v['u1'] ,$autotable[$v['u1']],$v['u3'] ,$v['id']) ?>
-				    	
-                     <?php } ?>
-                       
-               <?php } ?>  
-               
-               
-				 
-				</div>
-			</aside>
-			<input type="text" name="id" value="<?php echo $_GET["id"]  ?>" hidden="hide" />
+			
 			<p>
 				<tr>
 				<th></th>
@@ -114,6 +87,7 @@
 			
 		</section>
      </form>
+
 
 <footer>
 	<?php include CUR_VIEW_PATH."public/footer.html"?>
